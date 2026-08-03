@@ -646,6 +646,13 @@
       font-size: 13px;
     }
 
+    .data-refresh-note {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
     .sort-tabs {
       display: flex;
       gap: 8px;
@@ -2586,6 +2593,7 @@
         </div>
       </div>
 
+      <p class="data-refresh-note" id="dataRefreshNote" aria-live="polite"></p>
       <div class="list product-list" id="productList"></div>
     </section>
 
@@ -2960,6 +2968,21 @@
       ? window.FAKA_LOCAL_DATA.keywords
       : guideKeywords;
 
+    function updateDataRefreshNote() {
+      const note = document.getElementById("dataRefreshNote");
+      const generatedAt = window.FAKA_LOCAL_DATA?.generatedAt;
+      if (!note || !generatedAt) return;
+      const date = new Date(generatedAt);
+      if (Number.isNaN(date.getTime())) return;
+      note.textContent = `数据同步于 ${date.toLocaleString("zh-CN", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      })}；价格和库存请以购买页为准`;
+    }
+
     function localProductMatches(item, keyword) {
       const value = String(keyword || "").trim().toLowerCase();
       if (!value) return true;
@@ -3048,7 +3071,7 @@
 
         if (path.endsWith("/api/about")) {
           return {
-            content: "## 关于 AI号探\n\n这是一个用于查看公开 AI 账号商品信息的静态恢复版。商品价格、库存和店铺状态可能随时变化，购买前请到商品链接自行核验。"
+            content: "## 关于 AI号探\n\n商品数据由 GitHub Actions 定时从公开接口同步，页面会随同步结果自动更新。商品价格、库存和店铺状态可能随时变化，购买前请到商品链接自行核验。"
           };
         }
 
@@ -4187,6 +4210,7 @@
     document.querySelector("#home input[type='search']").value = currentKeyword;
     bindHomepageAdDetails();
     initSearchGuide();
+    updateDataRefreshNote();
     Promise.all([loadProducts(currentKeyword, "price_asc", 0, false, false), loadStores(), loadHotSearch(), loadChanges(), loadReports(), loadAbout()]).catch((error) => {
       notify("数据库数据加载失败，请检查服务或连接配置", 3000);
       console.error(error);
