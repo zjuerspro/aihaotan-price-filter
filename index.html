@@ -2927,7 +2927,7 @@
   </div>
 
   <script src="./goods-data.js"></script>
-  <script>window.FAKA_SITE_CONFIG = {"guideKeywords":["gpt free","team","gemini pro","super grok"]};</script>
+  <script>window.FAKA_SITE_CONFIG = {"guideKeywords":["gpt free","team","gemini pro","super grok"],"liveApiBase":"https://aihaotan-live-proxy.zjuchyoo.workers.dev"};</script>
   <script>
     const stockTip = "由于时效性问题，库存显示可能不准确，以实际购买时的库存为准";
     const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23eef3ef'/%3E%3Cpath d='M280 210h80M320 170v80' stroke='%2311a34a' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E";
@@ -2936,6 +2936,10 @@
     const guideKeywords = Array.isArray(window.FAKA_SITE_CONFIG?.guideKeywords) && window.FAKA_SITE_CONFIG.guideKeywords.length
       ? window.FAKA_SITE_CONFIG.guideKeywords
       : ["gpt free", "team", "gemini pro", "super grok"];
+    const LIVE_API_BASE = String(window.FAKA_SITE_CONFIG?.liveApiBase || "").replace(/\/+$/, "");
+    const LIVE_REFRESH_INTERVAL = 1000;
+    let liveRefreshTimer = null;
+    let liveRefreshInFlight = false;
     let currentKeyword = "";
     let currentSort = "price_asc";
     let currentOffset = 0;
@@ -2970,6 +2974,10 @@
 
     function updateDataRefreshNote() {
       const note = document.getElementById("dataRefreshNote");
+      if (note && LIVE_API_BASE) {
+        note.textContent = "实时模式：价格和库存每秒检查一次，原站响应时间会影响实际更新速度";
+        return;
+      }
       const generatedAt = window.FAKA_LOCAL_DATA?.generatedAt;
       if (!note || !generatedAt) return;
       const date = new Date(generatedAt);
@@ -3010,6 +3018,21 @@
       return rows.slice(Number(offset) || 0, (Number(offset) || 0) + (Number(limit) || PAGE_SIZE));
     }
 
+    function filterProductRows(rows) {
+      const min = minPriceFilter === "" ? null : Number(minPriceFilter);
+      const max = maxPriceFilter === "" ? null : Number(maxPriceFilter);
+      return (Array.isArray(rows) ? rows : [])
+        .filter((item) => Number(item.stock || 0) > 0)
+        .filter((item) => min === null || Number(item.price) >= min)
+        .filter((item) => max === null || Number(item.price) <= max);
+    }
+
+    function addPriceFilterParams(params) {
+      if (minPriceFilter !== "") params.set("minPrice", minPriceFilter);
+      if (maxPriceFilter !== "") params.set("maxPrice", maxPriceFilter);
+      return params;
+    }
+
     function localShopRows(keyword = "") {
       const value = String(keyword || "").trim().toLowerCase();
       const shops = new Map();
@@ -3034,6 +3057,15 @@
     }
 
     async function apiJson(url, options = {}) {
+      if (LIVE_API_BASE) {
+        try {
+          const response = await fetch(`${LIVE_API_BASE}${url}`, options);
+          if (!response.ok) throw new Error(await response.text());
+          return response.json();
+        } catch (error) {
+          console.warn("Live API unavailable; using the local snapshot.", error);
+        }
+      }
       if (window.FAKA_LOCAL_DATA) {
         const requestUrl = new URL(url, window.location.href);
         const path = requestUrl.pathname;
@@ -3498,32 +3530,52 @@
       bindHotKeywords();
     }
 
-    async function loadProducts(keyword = "", sort = "price_asc", offset = 0, append = false, trackSearch = false) {
+    async function loadProducts(keyword = "", sort = "price_asc", offset = 0, append = false, trackSearch = false, quiet = false) {
       isLoading = true;
       try {
         const activeKeyword = String(keyword || "").trim() || DEFAULT_KEYWORD;
-        if (trackSearch && activeKeyword && offset === 0) {
+        const hasPriceFilter = minPriceFilter !== "" || maxPriceFilter !== "";
+        if (trackSearch && activeKeyword && offset === 0 && !(LIVE_API_BASE && hasPriceFilter)) {
           const result = await apiJson("/api/search", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ keyword: activeKeyword, limit: PAGE_SIZE, sortBy: sort, offset })
           });
-          renderProducts(result.goods, append);
+          renderProducts(filterProductRows(result.goods), append);
           await loadHotSearch();
         } else {
-          const params = new URLSearchParams({ limit: PAGE_SIZE, sortBy: sort, offset });
+          const params = addPriceFilterParams(new URLSearchParams({ limit: PAGE_SIZE, sortBy: sort, offset }));
           params.set("keyword", activeKeyword);
           const rows = await apiJson(`/api/goods?${params}`);
-          renderProducts(rows, append);
+          renderProducts(filterProductRows(rows), append);
         }
         updateShareButton();
       } catch (error) {
-        notify("加载失败，请稍后再试", 2400);
+        if (!quiet) notify("加载失败，请稍后再试", 2400);
         console.error(error);
       } finally {
         isLoading = false;
       }
     }
+
+    async function refreshLiveProducts() {
+      if (!LIVE_API_BASE || document.hidden || liveRefreshInFlight || isLoading || currentOffset !== 0) return;
+      liveRefreshInFlight = true;
+      try {
+        await loadProducts(currentKeyword, currentSort, 0, false, false, true);
+      } finally {
+        liveRefreshInFlight = false;
+      }
+    }
+
+    function startLiveRefresh() {
+      if (!LIVE_API_BASE || liveRefreshTimer) return;
+      liveRefreshTimer = window.setInterval(refreshLiveProducts, LIVE_REFRESH_INTERVAL);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) refreshLiveProducts();
+    });
 
     async function loadMore() {
       if (isLoading || !hasMore) return;
@@ -4214,6 +4266,8 @@
     Promise.all([loadProducts(currentKeyword, "price_asc", 0, false, false), loadStores(), loadHotSearch(), loadChanges(), loadReports(), loadAbout()]).catch((error) => {
       notify("数据库数据加载失败，请检查服务或连接配置", 3000);
       console.error(error);
+    }).finally(() => {
+      startLiveRefresh();
     });
   </script>
 </body>
