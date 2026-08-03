@@ -1,0 +1,4198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI号探 - ChatGPT/Claude/Gemini/Grok等AI账号的发卡平台比价探针</title>
+  <meta name="description" content="聚合全网 AI 账号ChatGPT/Claude/Gemini/Grok账号发卡网站，提供商品搜索、店铺查询、价格比价、风险提示和举报信息。">
+  <meta name="keywords" content="AI号探,AI账号,发卡网站,ChatGPT账号,Claude账号,Gemini账号,Grok账号,ChatGPT接码,Claude接码,AI账号比价,Team账号,Plus账号,Pro账号,Business账号,AI代付">
+  <style>
+    :root {
+      --bg: #f7f8f7;
+      --panel: #ffffff;
+      --text: #111312;
+      --muted: #6b7280;
+      --line: #e7e9e8;
+      --brand: #11a34a;
+      --brand-dark: #07873a;
+      --brand-soft: #e8f8ee;
+      --danger: #ef4444;
+      --price: #ff3b30;
+      --amber: #f59e0b;
+      --shadow: 0 12px 36px rgba(19, 28, 22, .08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(17, 163, 74, .08), transparent 24rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 34rem);
+      color: var(--text);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(222, 226, 224, .8);
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+    }
+
+    .header-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      font-weight: 900;
+      background: linear-gradient(135deg, #151716 0%, var(--brand) 100%);
+      box-shadow: 0 10px 24px rgba(17, 163, 74, .28);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .brand-subtitle {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .72);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-link {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 15px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      background: #f0f3f1;
+    }
+
+    .nav-link.active {
+      color: #ffffff;
+      background: var(--brand);
+      box-shadow: 0 8px 18px rgba(17, 163, 74, .24);
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 28px 20px 64px;
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 18px 0;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      border: 1px solid rgba(17, 163, 74, .14);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin-top: 16px;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.04;
+    }
+
+    .hero-copy p {
+      max-width: 610px;
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 300px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #111312;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+      display: block;
+      opacity: .78;
+    }
+
+    .visual-overlay {
+      position: absolute;
+      inset: auto 18px 18px 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini-market-row {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      color: #ffffff;
+      background: rgba(15, 17, 16, .62);
+      backdrop-filter: blur(12px);
+    }
+
+    .mini-market-row img {
+      width: 44px;
+      height: 44px;
+      min-height: 44px;
+      border-radius: 8px;
+      object-fit: cover;
+      opacity: 1;
+    }
+
+    .mini-market-row strong {
+      display: block;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .mini-market-row span {
+      color: rgba(255, 255, 255, .72);
+      font-size: 12px;
+    }
+
+    .mini-market-row em {
+      color: #ff6a3d;
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .search-panel {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .9);
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .home-ad-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0 0 14px;
+    }
+
+    .home-ad-card {
+      min-width: 0;
+      overflow: hidden;
+      padding: 12px;
+      border: 1px solid #dfe6e2;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(19, 28, 22, .07);
+      color: var(--text);
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      text-decoration: none;
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+    }
+
+    .home-ad-card:hover {
+      border-color: rgba(17, 163, 74, .36);
+      box-shadow: 0 14px 34px rgba(19, 28, 22, .1);
+      transform: translateY(-2px);
+    }
+
+    .home-ad-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #eef4f0;
+    }
+
+    .home-ad-content {
+      display: block;
+      min-width: 0;
+      padding-top: 0;
+    }
+
+    .home-ad-image + .home-ad-content {
+      padding-top: 10px;
+    }
+
+    .home-ad-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 22px;
+      margin-bottom: 6px;
+    }
+
+    .home-ad-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 1px 7px;
+      border: 1px solid rgba(17, 163, 74, .16);
+      border-radius: 4px;
+      color: #087b38;
+      background: #eff9f3;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .home-ad-sponsor {
+      min-width: 0;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .home-ad-title {
+      display: block;
+      color: #111312;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 900;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .home-ad-description {
+      display: -webkit-box;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .search-bar {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      min-height: 52px;
+      padding: 0 8px 0 15px;
+      border: 2px solid #151716;
+      border-radius: 999px;
+      background: #ffffff;
+    }
+
+    .search-bar svg {
+      color: var(--brand);
+      width: 20px;
+      height: 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      min-width: 0;
+      color: var(--text);
+      background: transparent;
+      font-size: 16px;
+    }
+
+    .search-bar button {
+      height: 38px;
+      border: 0;
+      border-radius: 999px;
+      padding: 0 18px;
+      color: #ffffff;
+      background: #151716;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .hot-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hot-keywords span:first-child {
+      padding: 6px 0;
+      font-weight: 700;
+      color: #4b5563;
+    }
+
+    .keyword {
+      border: 1px solid #e4e7e5;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #f8faf9;
+      cursor: pointer;
+      color: #4b5563;
+    }
+
+    .keyword:hover {
+      border-color: rgba(17, 163, 74, .28);
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+    }
+
+    .search-guide {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid rgba(17, 163, 74, .32);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 8% 0, rgba(17, 163, 74, .2), transparent 14rem),
+        linear-gradient(135deg, #dcfce7 0%, #f0fdf4 48%, #ffffff 100%);
+      box-shadow: 0 12px 28px rgba(17, 163, 74, .14);
+    }
+
+    .search-guide.active {
+      display: block;
+    }
+
+    .search-guide-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .search-guide strong {
+      display: block;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .search-guide p {
+      margin: 4px 0 0;
+      color: #4b5563;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .search-guide-close {
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(17, 163, 74, .18);
+      border-radius: 6px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .76);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .search-guide-close:hover {
+      color: var(--brand-dark);
+      background: #ffffff;
+    }
+
+    .guide-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .guide-keywords button {
+      border: 1px solid rgba(17, 163, 74, .22);
+      border-radius: 6px;
+      padding: 7px 10px;
+      color: var(--brand-dark);
+      background: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .guide-keywords button:hover {
+      background: var(--brand-soft);
+    }
+
+    .guide-mask {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: none;
+      background: rgba(17, 19, 18, .62);
+      backdrop-filter: blur(3px);
+    }
+
+    .guide-mask.active {
+      display: block;
+    }
+
+    .guide-focus {
+      position: relative;
+      z-index: 91;
+      border-color: var(--brand) !important;
+      background: #ffffff !important;
+      border-radius: 999px;
+      box-shadow: 0 0 0 8px rgba(220, 252, 231, .98), 0 0 0 9999px rgba(17, 19, 18, .62), 0 22px 56px rgba(0, 0, 0, .28), 0 0 34px rgba(17, 163, 74, .44);
+    }
+
+    .guide-focus-button {
+      position: relative;
+      z-index: 91;
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, .95), 0 0 0 9999px rgba(17, 19, 18, .62), 0 20px 48px rgba(0, 0, 0, .24);
+    }
+
+    .guide-popover {
+      position: fixed;
+      z-index: 92;
+      display: none;
+      width: min(360px, calc(100vw - 32px));
+      padding: 16px;
+      border: 1px solid rgba(17, 163, 74, .2);
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, .22);
+    }
+
+    .guide-popover.active {
+      display: block;
+    }
+
+    .guide-step {
+      width: fit-content;
+      margin-bottom: 8px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .guide-popover h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .guide-popover p {
+      margin: 8px 0 0;
+      color: #4b5563;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .guide-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .guide-actions button {
+      min-height: 36px;
+      border-radius: 6px;
+      padding: 0 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .guide-cancel {
+      border: 1px solid var(--line);
+      color: #4b5563;
+      background: #ffffff;
+    }
+
+    .guide-next {
+      border: 0;
+      color: #ffffff;
+      background: var(--brand);
+      box-shadow: 0 10px 20px rgba(17, 163, 74, .22);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 20px 0 12px;
+    }
+
+    #changes .section-head,
+    #submit .section-head,
+    #about .section-head {
+      margin-top: 0;
+    }
+
+    .section-head h2 {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .section-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sort-tabs {
+      display: flex;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .sort-tabs button {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 12px;
+      color: #4b5563;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .sort-tabs button.active {
+      border-color: rgba(17, 163, 74, .22);
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-weight: 800;
+    }
+
+    .product-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: nowrap;
+      min-width: 0;
+    }
+
+    .share-search-btn {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      height: 34px;
+      border: 1px solid rgba(17, 163, 74, .2);
+      border-radius: 5px;
+      padding: 0 12px;
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+
+    .share-search-btn.visible {
+      display: inline-flex;
+    }
+
+    .share-search-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 34px 16px;
+      border: 1px dashed #d7ded9;
+      border-radius: 8px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .72);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .product-list,
+    .store-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .product-card,
+    .store-card,
+    .exposure-card {
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      gap: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 8px 24px rgba(20, 24, 22, .05);
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .product-card:hover,
+    .store-card:hover,
+    .exposure-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(17, 163, 74, .22);
+      box-shadow: var(--shadow);
+    }
+
+    .thumb {
+      position: relative;
+      overflow: hidden;
+      width: 128px;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      background: #eef2ef;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .badge {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      border-radius: 999px;
+      padding: 4px 7px;
+      color: #ffffff;
+      background: rgba(17, 19, 18, .78);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .card-body {
+      min-width: 0;
+      display: grid;
+      gap: 7px;
+      align-content: start;
+    }
+
+    .product-info-row {
+      display: grid;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .card-topline {
+      display: flex;
+      gap: 10px;
+      align-items: start;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .card-title {
+      margin: 0;
+      min-width: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 800;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .title-open {
+      display: inline;
+      border: 0;
+      padding: 0;
+      color: inherit;
+      background: transparent;
+      font: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .title-open:hover,
+    .title-open:focus {
+      color: var(--brand);
+      outline: none;
+    }
+
+    .store-name,
+    .store-desc,
+    .exposure-link {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .store-desc {
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-radius: 999px;
+      padding: 3px 8px;
+      color: #4b5563;
+      background: #f3f5f4;
+      font-size: 11px;
+    }
+
+    .stock {
+      color: var(--muted);
+      background: transparent;
+      padding: 0;
+    }
+
+    .stock-help {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      margin-left: 4px;
+      border: 1px solid #cfd6d2;
+      border-radius: 999px;
+      color: #6b7280;
+      background: #ffffff;
+      font-size: 10px;
+      line-height: 1;
+      cursor: help;
+      vertical-align: 1px;
+    }
+
+    .stock-help::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 8px);
+      width: 240px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      color: #ffffff;
+      background: rgba(17, 19, 18, .94);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+      font-size: 12px;
+      line-height: 1.6;
+      white-space: normal;
+      transform: translateX(-50%) translateY(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease;
+      z-index: 5;
+    }
+
+    .stock-help:hover::after,
+    .stock-help:focus::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 2px;
+    }
+
+    .price {
+      color: var(--price);
+      font-weight: 900;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .price small {
+      font-size: 12px;
+      margin-right: 1px;
+    }
+
+    .go-btn,
+    .submit-btn,
+    .danger-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      min-height: 38px;
+      padding: 0 16px;
+      color: #ffffff;
+      background: var(--brand);
+      cursor: pointer;
+      font-weight: 800;
+      box-shadow: 0 10px 20px rgba(17, 163, 74, .22);
+      white-space: nowrap;
+    }
+
+    .go-btn {
+      min-height: 34px;
+      border: 1px solid rgba(17, 163, 74, .18);
+      border-radius: 3px;
+      color: var(--brand-dark);
+      background: #edf8f1;
+      box-shadow: none;
+      line-height: 1;
+    }
+
+    .go-btn:hover,
+    .submit-btn:hover {
+      background: var(--brand-dark);
+    }
+
+    .go-btn:hover {
+      color: #ffffff;
+      background: var(--brand);
+    }
+
+    .danger-btn {
+      background: var(--danger);
+      box-shadow: 0 10px 20px rgba(239, 68, 68, .22);
+    }
+
+    .danger-btn:hover {
+      background: #dc2626;
+    }
+
+    .store-card {
+      grid-template-columns: 96px minmax(0, 1fr);
+    }
+
+    .store-card .card-title {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .store-card .thumb {
+      width: 96px;
+    }
+
+    .store-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .store-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .comment-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 0;
+      padding: 0;
+      color: var(--brand-dark);
+      background: transparent;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .comment-open:hover,
+    .comment-open:focus {
+      color: var(--brand);
+      outline: none;
+    }
+
+    .store-meta svg {
+      width: 14px;
+      height: 14px;
+      color: #8a9490;
+      flex: 0 0 auto;
+    }
+
+    .change-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .change-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .change-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(20, 24, 22, .05);
+    }
+
+    .change-title {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 800;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .change-shop {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .change-values {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .change-diff {
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .change-diff.up {
+      color: var(--danger);
+    }
+
+    .change-diff.down {
+      color: var(--brand-dark);
+    }
+
+    .change-range {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .submit-tabs {
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f6f8f7;
+    }
+
+    .submit-tabs button {
+      min-height: 38px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 800;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+
+    .submit-tabs button:hover {
+      color: var(--text);
+      background: #ffffff;
+    }
+
+    .submit-tabs button.active {
+      color: #ffffff;
+      background: var(--brand);
+      box-shadow: 0 8px 18px rgba(17, 163, 74, .18);
+    }
+
+    .submit-pane {
+      display: none;
+    }
+
+    .submit-pane.active {
+      display: block;
+    }
+
+    .report-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, .9fr) minmax(0, 1.1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .report-page-form {
+      display: grid;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(20, 24, 22, .05);
+    }
+
+    .submit-shop-form {
+      width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .submit-shop-form .wide,
+    .submit-shop-form button {
+      grid-column: 1 / -1;
+    }
+
+    .approved-reports {
+      display: grid;
+      gap: 10px;
+    }
+
+    .report-card {
+      padding: 14px;
+      border: 1px solid #fee2e2;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(20, 24, 22, .05);
+    }
+
+    .report-card h3 {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .report-card .report-shop,
+    .report-card .report-meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .report-card .report-content {
+      margin: 10px 0 0;
+      color: #374151;
+      font-size: 13px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .report-card a {
+      color: var(--brand-dark);
+      word-break: break-all;
+    }
+
+    .about-content {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: var(--shadow);
+      color: #374151;
+      line-height: 1.9;
+    }
+
+    .about-content h1,
+    .about-content h2,
+    .about-content h3 {
+      margin: 0 0 12px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .about-content p,
+    .about-content ul,
+    .about-content ol {
+      margin: 0 0 14px;
+    }
+
+    .about-content img {
+      display: block;
+      max-width: min(360px, 100%);
+      height: auto;
+      margin: 14px 0;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #f7faf8;
+    }
+
+    .category-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .exposure-card {
+      grid-template-columns: 96px minmax(0, 1fr);
+      border-color: #fee2e2;
+    }
+
+    .exposure-card .thumb {
+      width: 96px;
+    }
+
+    .reason-box {
+      border-left: 3px solid var(--danger);
+      border-radius: 0 8px 8px 0;
+      padding: 8px 10px;
+      color: #7f1d1d;
+      background: #fff1f2;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .exposure-action {
+      margin-top: 18px;
+      padding: 24px;
+      border: 1px solid #fecaca;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #fff7f7 0%, #ffffff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .exposure-action h2 {
+      font-size: 24px;
+    }
+
+    .exposure-action p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .exposure-action .danger-btn {
+      min-height: 52px;
+      padding: 0 30px;
+      font-size: 18px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 18px;
+      background: rgba(12, 14, 13, .62);
+      backdrop-filter: blur(6px);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-card {
+      width: min(560px, 100%);
+      max-height: calc(100vh - 64px);
+      overflow: auto;
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .28);
+    }
+
+    .info-modal-card {
+      width: min(680px, 100%);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .info-modal-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: auto;
+      padding: 18px 20px 20px;
+    }
+
+    .info-modal-summary {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .info-modal-summary img {
+      width: 86px;
+      height: 86px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #f1f4f2;
+    }
+
+    .info-modal-meta {
+      display: grid;
+      gap: 7px;
+      min-width: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .info-modal-price {
+      color: var(--price);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .info-modal-desc {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: #374151;
+      background: #fbfcfb;
+      font-size: 13px;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    .info-modal-desc p,
+    .info-modal-desc div {
+      margin: 0 0 10px;
+    }
+
+    .info-modal-desc p:last-child,
+    .info-modal-desc div:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-modal-desc ul,
+    .info-modal-desc ol {
+      margin: 8px 0 10px;
+      padding-left: 22px;
+    }
+
+    .info-modal-desc li {
+      margin: 4px 0;
+    }
+
+    .info-modal-desc a {
+      color: var(--brand-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .info-modal-desc img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+      border-radius: 6px;
+    }
+
+    .info-modal-desc table {
+      width: 100%;
+      margin: 10px 0;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .info-modal-desc th,
+    .info-modal-desc td {
+      border: 1px solid var(--line);
+      padding: 6px 8px;
+      text-align: left;
+    }
+
+    .modal-risk {
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      color: #991b1b;
+      background: #fff1f2;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .modal-risk strong {
+      display: block;
+      margin-bottom: 2px;
+      color: #7f1d1d;
+    }
+
+    .info-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex: 0 0 auto;
+      padding: 14px 20px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .info-modal-actions a {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .info-modal-actions .buy {
+      color: #ffffff;
+      background: var(--brand);
+      box-shadow: 0 10px 20px rgba(17, 163, 74, .22);
+    }
+
+    .info-modal-actions .detail {
+      border: 1px solid var(--line);
+      color: #374151;
+      background: #f7faf8;
+    }
+
+    .homepage-ad-modal-card {
+      width: min(760px, 100%);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .homepage-ad-modal-body {
+      min-height: 0;
+      overflow: auto;
+      padding: 18px 20px 22px;
+    }
+
+    .homepage-ad-detail-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .homepage-ad-detail-meta span {
+      display: inline-flex;
+      min-height: 24px;
+      align-items: center;
+      padding: 2px 8px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #f7faf8;
+    }
+
+    .homepage-ad-markdown {
+      color: #303833;
+      font-size: 14px;
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
+
+    .homepage-ad-markdown h1,
+    .homepage-ad-markdown h2,
+    .homepage-ad-markdown h3,
+    .homepage-ad-markdown h4,
+    .homepage-ad-markdown h5,
+    .homepage-ad-markdown h6 {
+      margin: 18px 0 8px;
+      color: #151716;
+      line-height: 1.45;
+    }
+
+    .homepage-ad-markdown h1:first-child,
+    .homepage-ad-markdown h2:first-child,
+    .homepage-ad-markdown h3:first-child,
+    .homepage-ad-markdown h4:first-child,
+    .homepage-ad-markdown h5:first-child,
+    .homepage-ad-markdown h6:first-child {
+      margin-top: 0;
+    }
+
+    .homepage-ad-markdown h1 { font-size: 22px; }
+    .homepage-ad-markdown h2 { font-size: 19px; }
+    .homepage-ad-markdown h3 { font-size: 16px; }
+    .homepage-ad-markdown h4, .homepage-ad-markdown h5, .homepage-ad-markdown h6 { font-size: 15px; }
+    .homepage-ad-markdown p { margin: 0 0 12px; }
+    .homepage-ad-markdown ul, .homepage-ad-markdown ol { margin: 8px 0 14px; padding-left: 24px; }
+    .homepage-ad-markdown li { margin: 4px 0; }
+    .homepage-ad-markdown a { color: var(--brand-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .homepage-ad-markdown img { display: block; max-width: 100%; height: auto; margin: 12px 0; border: 1px solid var(--line); border-radius: 7px; }
+    .homepage-ad-markdown blockquote { margin: 12px 0; padding: 10px 12px; border-left: 3px solid var(--brand); background: #f3faf6; color: #486054; }
+
+    .comment-modal-card {
+      width: min(680px, 100%);
+    }
+
+    .share-modal-card {
+      width: min(520px, 100%);
+    }
+
+    .share-modal-body {
+      display: grid;
+      gap: 14px;
+      padding: 18px 20px 20px;
+    }
+
+    .share-qr {
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8faf9;
+    }
+
+    .share-qr img {
+      width: min(240px, 100%);
+      aspect-ratio: 1;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .share-link-box {
+      display: grid;
+      gap: 8px;
+    }
+
+    .share-link-box label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .share-link-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+    }
+
+    .share-link-row input {
+      min-width: 0;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 10px;
+      color: #374151;
+      background: #ffffff;
+      font-size: 13px;
+    }
+
+    .share-link-row button {
+      min-height: 40px;
+      border: 0;
+      border-radius: 5px;
+      padding: 0 14px;
+      color: #ffffff;
+      background: var(--brand);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .comment-modal-body {
+      padding: 18px 20px 20px;
+    }
+
+    .comment-list {
+      display: grid;
+      gap: 10px;
+      max-height: 280px;
+      overflow: auto;
+      padding-right: 2px;
+    }
+
+    .comment-item {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfb;
+    }
+
+    .comment-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .comment-item p {
+      margin: 0;
+      color: #374151;
+      font-size: 13px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .comment-form {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      outline: 0;
+      padding: 11px 12px;
+      background: #fbfcfb;
+      color: var(--text);
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .comment-form textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .comment-form input:focus,
+    .comment-form textarea:focus {
+      border-color: rgba(17, 163, 74, .52);
+      box-shadow: 0 0 0 4px rgba(17, 163, 74, .12);
+      background: #ffffff;
+    }
+
+    .comment-form button {
+      justify-self: end;
+      border-radius: 6px;
+    }
+
+    .sales-rank-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: 0 8px 24px rgba(20,24,22,.05);
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .sales-rank-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(17,163,74,.22);
+      box-shadow: var(--shadow);
+    }
+    .sales-rank-num {
+      width: 28px;
+      font-size: 15px;
+      font-weight: 900;
+      text-align: center;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .sales-rank-num.top3 { color: var(--brand); }
+    .sales-rank-info { min-width:0; flex:1; }
+    .sales-rank-name { font-weight:800; font-size:14px; }
+    .sales-rank-name a { color:inherit; }
+    .sales-rank-name a:hover { color:var(--brand); }
+    .sales-rank-count {
+      font-size:20px;
+      font-weight:900;
+      color:var(--price);
+      cursor:pointer;
+      flex-shrink:0;
+    }
+    .sales-rank-count:hover { opacity:.7; }
+
+    .chart-modal {
+      position:fixed; inset:0; z-index:60;
+      display:none; align-items:center; justify-content:center;
+      padding:18px;
+      background:rgba(12,14,13,.62);
+      backdrop-filter:blur(6px);
+    }
+    .chart-modal.active { display:flex; }
+    .chart-box {
+      width:min(640px,100%);
+      max-height:calc(100vh - 36px);
+      border-radius:12px;
+      background:#fff;
+      box-shadow:0 30px 80px rgba(0,0,0,.32);
+      padding:24px 20px 20px;
+    }
+    .chart-box h3 { margin:0 0 4px; font-size:18px; }
+    .chart-box .chart-close {
+      float:right;
+      border:1px solid var(--line);
+      border-radius:999px;
+      width:32px;height:32px;
+      display:grid;place-items:center;
+      cursor:pointer;
+      background:#fff;
+      color:#4b5563;
+    }
+    .chart-box .chart-close:hover { background:#f3f5f4; }
+    .chart-wrap { position:relative; height:300px; margin-top:12px; }
+
+    .disclaimer-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(12, 14, 13, .72);
+      backdrop-filter: blur(8px);
+    }
+
+    .disclaimer-overlay.active {
+      display: flex;
+    }
+
+    .disclaimer-box {
+      width: min(640px, 100%);
+      max-height: min(700px, calc(100vh - 36px));
+      overflow-y: auto;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .32);
+      padding: 32px 28px;
+    }
+
+    .disclaimer-box h2 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .disclaimer-box .sub {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .disclaimer-box ol {
+      margin: 0;
+      padding: 0 0 0 20px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #374151;
+    }
+
+    .disclaimer-box ol li {
+      margin-bottom: 14px;
+    }
+
+    .disclaimer-box ol li strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+
+    .disclaimer-box .btn-wrap {
+      margin-top: 22px;
+      text-align: center;
+    }
+
+    .disclaimer-box .btn-wrap button {
+      min-width: 140px;
+      height: 44px;
+      border: 0;
+      border-radius: 999px;
+      color: #ffffff;
+      background: var(--brand);
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 10px 20px rgba(17, 163, 74, .22);
+    }
+
+    .disclaimer-box .btn-wrap button:hover {
+      background: var(--brand-dark);
+    }
+
+    .modal-head {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .96);
+    }
+
+    .modal-head h2 {
+      font-size: 20px;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #4b5563;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .icon-btn:hover {
+      color: var(--text);
+      background: #f3f5f4;
+    }
+
+    .report-form {
+      display: grid;
+      gap: 14px;
+      padding: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #374151;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      outline: 0;
+      padding: 12px 13px;
+      background: #fbfcfb;
+      color: var(--text);
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(17, 163, 74, .52);
+      box-shadow: 0 0 0 4px rgba(17, 163, 74, .12);
+      background: #ffffff;
+    }
+
+    .upload-box {
+      display: grid;
+      place-items: center;
+      min-height: 120px;
+      border: 1px dashed #d1d5db;
+      border-radius: 8px;
+      background: #f9fafb;
+      color: var(--muted);
+      text-align: center;
+      cursor: pointer;
+      padding: 18px;
+    }
+
+    .upload-box input {
+      display: none;
+    }
+
+    .upload-box strong {
+      display: block;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 80;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      border-radius: 999px;
+      padding: 11px 16px;
+      color: #ffffff;
+      background: #111312;
+      box-shadow: var(--shadow);
+      transition: opacity .2s ease, transform .2s ease;
+      max-width: calc(100vw - 32px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toast.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .product-list,
+      .store-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 860px) {
+      .home-ad-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .header-inner {
+        align-items: stretch;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 16px;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: center;
+        gap: 4px;
+        padding: 3px;
+      }
+
+      .nav-link {
+        padding: 7px 10px;
+        font-size: 13px;
+      }
+
+      .container {
+        padding: 22px 14px 52px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .hero-copy {
+        min-height: auto;
+        padding: 6px 0;
+      }
+
+      .hero-copy p {
+        font-size: 15px;
+      }
+
+      .hero-visual,
+      .hero-visual img {
+        min-height: 250px;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .sort-tabs {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .exposure-action {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .change-card {
+        grid-template-columns: 1fr;
+      }
+
+      .change-values {
+        text-align: left;
+      }
+
+      .report-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .submit-shop-form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .header-inner {
+        padding: 10px 10px;
+      }
+
+      .nav {
+        justify-content: flex-start;
+        gap: 3px;
+      }
+
+      .nav-link {
+        padding: 6px 8px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .product-list,
+      .store-list {
+        grid-template-columns: 1fr;
+      }
+
+      #home .section-head {
+        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .product-actions {
+        width: 100%;
+        max-width: none;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .product-actions::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand-subtitle {
+        display: none;
+      }
+
+      #home .section-head {
+        align-items: flex-start;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      #home .section-head > div:first-child {
+        min-width: 0;
+      }
+
+      #home .section-head h2 {
+        font-size: 18px;
+      }
+
+      #home .section-head p {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .product-actions {
+        width: 100%;
+        max-width: none;
+        justify-content: flex-start;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+      }
+
+      .product-actions::-webkit-scrollbar {
+        display: none;
+      }
+
+      .share-search-btn {
+        width: auto;
+        min-width: auto;
+        padding: 0 10px;
+        justify-content: center;
+        overflow: visible;
+      }
+
+    .share-search-btn svg {
+      flex: 0 0 auto;
+    }
+
+    #home .product-actions {
+      position: relative;
+    }
+
+    .price-filter-popover {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      z-index: 20;
+      width: min(320px, calc(100vw - 32px));
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, .16);
+    }
+
+    .price-filter-popover[hidden] {
+      display: none;
+    }
+
+    .price-filter-title {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .price-filter-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .price-filter-field {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .price-filter-field input {
+      width: 100%;
+      height: 38px;
+      box-sizing: border-box;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 0 10px;
+      color: var(--ink);
+      background: #fbfcfd;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .price-filter-field input:focus {
+      outline: 2px solid rgba(17, 163, 74, .2);
+      border-color: var(--brand);
+    }
+
+    .price-filter-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .price-filter-hint {
+      min-width: 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .price-filter-buttons {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 8px;
+    }
+
+    .price-filter-buttons button {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 10px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .price-filter-clear {
+      color: var(--muted);
+      background: #ffffff;
+    }
+
+    .price-filter-apply {
+      color: #ffffff;
+      border-color: var(--brand) !important;
+      background: var(--brand);
+    }
+
+    .price-filter-toggle.active {
+      border-color: rgba(17, 163, 74, .22);
+      color: var(--brand-dark);
+      background: var(--brand-soft);
+      font-weight: 800;
+    }
+
+    @media (max-width: 680px) {
+      .price-filter-popover {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    #home .sort-tabs {
+        width: auto;
+        flex: 0 0 auto;
+        gap: 6px;
+        overflow: visible;
+        padding-bottom: 0;
+      }
+
+      #home .sort-tabs button {
+        height: 34px;
+        padding: 0 10px;
+      }
+
+      .nav {
+        justify-content: center;
+      }
+
+      .search-panel {
+        padding: 12px;
+        border-radius: 8px;
+      }
+
+      .home-ad-grid {
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .home-ad-card {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 6px;
+        background: #ffffff;
+        box-shadow: 0 6px 16px rgba(19, 28, 22, .05);
+      }
+
+      .home-ad-image,
+      .home-ad-meta,
+      .home-ad-description {
+        display: none;
+      }
+
+      .home-ad-content {
+        padding: 0;
+      }
+
+      .home-ad-title {
+        font-size: 13px;
+        line-height: 1.35;
+        text-align: center;
+      }
+
+      .search-bar {
+        grid-template-columns: 22px minmax(0, 1fr) 64px;
+        min-height: 48px;
+        border-width: 1px;
+        border-color: #dfe5e2;
+        border-radius: 8px;
+        padding: 0 7px 0 12px;
+        background: #ffffff;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9);
+      }
+
+      .search-bar input {
+        font-size: 16px;
+      }
+
+      .search-bar button {
+        width: 64px;
+        height: 34px;
+        margin: 0;
+        padding: 0;
+        background: var(--brand);
+      }
+
+      .product-card,
+      .store-card,
+      .exposure-card {
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .product-card .card-body,
+      .store-card .card-body {
+        gap: 5px;
+      }
+
+      .thumb,
+      .store-card .thumb,
+      .exposure-card .thumb {
+        width: 92px;
+      }
+
+      .card-title {
+        font-size: 14px;
+        line-height: 1.38;
+      }
+
+      .product-info-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .product-info-row .store-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .meta-row {
+        gap: 6px;
+        justify-content: flex-end;
+        white-space: nowrap;
+      }
+
+      .pill {
+        min-height: 22px;
+        font-size: 11px;
+      }
+
+      .card-bottom {
+        align-items: start;
+        flex-direction: column;
+        gap: 4px;
+        margin-top: 0;
+      }
+
+      .price {
+        font-size: 18px;
+      }
+
+      .stock-help::after {
+        left: auto;
+        right: 0;
+        width: min(220px, calc(100vw - 32px));
+        transform: translateY(4px);
+      }
+
+      .stock-help:hover::after,
+      .stock-help:focus::after {
+        transform: translateY(0);
+      }
+
+      .go-btn {
+        width: 100%;
+      }
+
+      .mini-market-row {
+        grid-template-columns: 38px 1fr auto;
+      }
+
+      .mini-market-row img {
+        width: 38px;
+        height: 38px;
+        min-height: 38px;
+      }
+
+      .disclaimer-overlay {
+        padding: 40px 18px;
+        overflow-y: auto;
+        align-items: start;
+      }
+
+      .disclaimer-box {
+        max-height: none;
+        margin: auto 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .product-card,
+      .store-card,
+      .exposure-card {
+        grid-template-columns: 82px minmax(0, 1fr);
+      }
+
+      .thumb,
+      .store-card .thumb,
+      .exposure-card .thumb {
+        width: 82px;
+      }
+
+      .card-title {
+        font-size: 13px;
+      }
+
+      .store-name,
+      .store-desc,
+      .exposure-link,
+      .meta-row,
+      .store-meta {
+        font-size: 11px;
+      }
+
+      .price {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="Faka AI 首页">
+        <span>
+          <span class="brand-title">AI号探</span>
+          <span class="brand-subtitle">ChatGPT/Claude/Gemini/Grok等AI账号的发卡平台比价探针</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <button class="nav-link active" data-view="home">首页</button>
+        <button class="nav-link" data-view="stores">店铺</button>
+        <a class="nav-link" href="https://hub.aihaotan.com" target="_blank" rel="noopener">中转</a>
+        <button class="nav-link" data-view="changes">异动</button>
+        <button class="nav-link" data-view="submit">提交</button>
+        <button class="nav-link" data-view="about">关于</button>
+        <button class="nav-link" data-view="exposure" style="display:none">曝光台</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="home" class="view active" data-panel="home">
+            <div class="home-ad-grid" aria-label="推荐内容">
+        <button class="home-ad-card" type="button" data-home-ad-detail data-ad-title="&#128293;ChatGPT Pro 20x 拼车" data-ad-sponsor="广告" data-ad-tag="掩耳拼车" data-ad-content-base64="PHA+6ZyA6KaB5ou86L2m55qE6L2m5Y+L6IGU57O75b6u5L+h77yaemh1amluNDwvcD4KPHA+5LiK6L2m6ZO+5o6l77yaPGEgaHJlZj0iaHR0cHM6Ly95YW5lcmFwaS5jb20vIiB0YXJnZXQ9Il9ibGFuayI+aHR0cHM6Ly95YW5lcmFwaS5jb20vPC9hPjwvcD4KPGEgaHJlZj0iaHR0cHM6Ly95YW5lcmFwaS5jb20vIiB0YXJnZXQ9Il9ibGFuayI+PGltZyBzcmM9Inp6X3ByaWNlLmpwZyIgd2lkdGg9IjEwMDAiIC8+PC9hPgo8cD7ogZTns7vmlrnlvI/vvJo8L3A+CjxpbWcgc3JjPSJ6el93ZWNoYXQuanBnIiB3aWR0aD0iNTAwIiAvPg==" aria-haspopup="dialog" aria-label="查看&#128293;ChatGPT Pro 20x 拼车详情">
+          
+          <span class="home-ad-content">
+            <span class="home-ad-meta"><span class="home-ad-tag">掩耳拼车</span><span class="home-ad-sponsor">广告</span></span>
+            <strong class="home-ad-title">&#128293;ChatGPT Pro 20x 拼车</strong>
+            <span class="home-ad-description">ChatGPT Pro 20x 2/3/4人拼车&#127873;</span>
+          </span>        </button>
+        <a class="home-ad-card" href="https://www.likeai520.cc/register?aff=B3M6BGAC2HU4" target="_blank" rel="sponsored nofollow noopener noreferrer" aria-label="&#128293;LikeAI 开发者 API 服务">
+          
+          <span class="home-ad-content">
+            <span class="home-ad-meta"><span class="home-ad-tag">API服务</span><span class="home-ad-sponsor">赞助商广告</span></span>
+            <strong class="home-ad-title">&#128293;LikeAI 开发者 API 服务</strong>
+            <span class="home-ad-description">支持GPT/Claude/GLM/Ds/Grok，倍率：GLM 0.001x起，DS 0.02x起，GPT 0.13x起，Claude 0.15x起</span>
+          </span>        </a>
+        <button class="home-ad-card" type="button" data-home-ad-detail data-ad-title="广告位招租" data-ad-sponsor="招租" data-ad-tag="广告" data-ad-content-base64="PHA+5ZWG5a626ZyA6KaB5ZCI5L2c5qyi6L+O6IGU57O75b6u5L+hPC9wPgo8aW1nIHNyYz0ibXlfd2VjaGF0LmpwZyIgd2lkdGg9IjUwMCIgLz4=" aria-haspopup="dialog" aria-label="查看广告位招租详情">
+          
+          <span class="home-ad-content">
+            <span class="home-ad-meta"><span class="home-ad-tag">广告</span><span class="home-ad-sponsor">招租</span></span>
+            <strong class="home-ad-title">广告位招租</strong>
+            <span class="home-ad-description">广告位招租</span>
+          </span>        </button>
+        <button class="home-ad-card" type="button" data-home-ad-detail data-ad-title="&#127873;商务合作" data-ad-sponsor="赞助" data-ad-tag="广告" data-ad-content-base64="PHA+5ZWG5a626ZyA6KaB5ZCI5L2c5qyi6L+O6IGU57O75b6u5L+hPC9wPgo8aW1nIHNyYz0ibXlfd2VjaGF0LmpwZyIgd2lkdGg9IjUwMCIgLz4=" aria-haspopup="dialog" aria-label="查看&#127873;商务合作详情">
+          
+          <span class="home-ad-content">
+            <span class="home-ad-meta"><span class="home-ad-tag">广告</span><span class="home-ad-sponsor">赞助</span></span>
+            <strong class="home-ad-title">&#127873;商务合作</strong>
+            <span class="home-ad-description">需要合作欢迎联系微信</span>
+          </span>        </button>
+      </div>
+      <div class="search-panel">
+        <form class="search-bar" data-search-form>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10.8 18.1a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6Zm5.2-1.9 4.2 4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <input type="search" placeholder="搜索 ChatGPT、Claude、Midjourney、Gemini..." aria-label="搜索商品">
+          <button type="submit">搜索</button>
+        </form>
+        <div class="search-guide" id="searchGuide" aria-live="polite">
+          <div class="search-guide-head">
+            <div>
+              <strong>第一次使用？可以先试试这些关键词</strong>
+              <p>在上方输入框搜索 AI 账号、套餐或平台名称，点击搜索后即可查看商品库存、价格和对应店铺。</p>
+            </div>
+            <button class="search-guide-close" type="button" id="searchGuideClose" aria-label="关闭搜索引导">×</button>
+          </div>
+          <div class="guide-keywords" aria-label="搜索示例">
+            <button type="button" data-guide-keyword="gpt free">gpt free</button>
+            <button type="button" data-guide-keyword="team">team</button>
+            <button type="button" data-guide-keyword="gemini pro">gemini pro</button>
+            <button type="button" data-guide-keyword="super grok">super grok</button>
+          </div>
+        </div>
+        <div class="hot-keywords">
+          <span>最近热搜</span>
+          <button class="keyword" type="button">ChatGPT Plus</button>
+          <button class="keyword" type="button">Claude Pro</button>
+          <button class="keyword" type="button">Midjourney</button>
+          <button class="keyword" type="button">Gemini Advanced</button>
+          <button class="keyword" type="button">Cursor Pro</button>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div>
+          <h2>商品列表</h2>
+          <p>库存信息有一定时效性，显示的数量不一定准确，请以购买页的实时数量为准</p>
+        </div>
+        <div class="product-actions">
+          <button class="share-search-btn" type="button" id="shareSearchBtn" aria-label="分享当前搜索结果">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 12h8M12 8l4 4-4 4M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            分享
+          </button>
+          <div class="sort-tabs" aria-label="商品排序">
+            <button class="active" type="button" data-sort="price_asc">价格低</button>
+            <button type="button" data-sort="stock">库存多</button>
+            <button type="button" class="price-filter-toggle" data-price-filter-toggle aria-expanded="false" aria-controls="priceFilterPopover">价格区间</button>
+          </div>
+          <div class="price-filter-popover" id="priceFilterPopover" hidden>
+            <p class="price-filter-title">筛选价格范围</p>
+            <div class="price-filter-fields">
+              <label class="price-filter-field">
+                最低价
+                <input id="minPriceInput" type="number" min="0" step="0.01" inputmode="decimal" placeholder="不限">
+              </label>
+              <label class="price-filter-field">
+                最高价
+                <input id="maxPriceInput" type="number" min="0" step="0.01" inputmode="decimal" placeholder="不限">
+              </label>
+            </div>
+            <div class="price-filter-footer">
+              <p class="price-filter-hint" id="priceFilterHint">不设置上下限时显示全部价格</p>
+              <div class="price-filter-buttons">
+                <button class="price-filter-clear" type="button" data-price-filter-clear>清除</button>
+                <button class="price-filter-apply" type="button" data-price-filter-apply>应用</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="list product-list" id="productList"></div>
+    </section>
+
+    <section id="stores" class="view" data-panel="stores">
+      <div class="search-panel">
+        <form class="search-bar" data-search-form>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10.8 18.1a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6Zm5.2-1.9 4.2 4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <input type="search" placeholder="搜索店铺名称、商品类别或介绍..." aria-label="搜索店铺">
+          <button type="submit">搜索</button>
+        </form>
+      </div>
+
+      <div class="section-head">
+        <div>
+          <h2>全部店铺</h2>
+          <p>收录 AI 账号、绘图工具、开发工具等发卡店铺。</p>
+        </div>
+      </div>
+
+      <div class="list store-list" id="storeList"></div>
+    </section>
+
+    <section id="changes" class="view" data-panel="changes">
+      <div class="section-head">
+        <div>
+          <h2>商品异动</h2>
+          <p>按时间窗口统计商品价格和店铺销量变化，涨跌用颜色和符号区分。</p>
+        </div>
+      </div>
+
+      <div class="change-toolbar">
+        <div class="sort-tabs" aria-label="异动类型">
+          <button class="active" type="button" data-change-type="price">价格</button>
+          <button type="button" data-change-type="sales">销量</button>
+        </div>
+        <div class="sort-tabs" aria-label="异动周期">
+          <button type="button" data-change-period="7d">7天</button>
+          <button type="button" data-change-period="1d">1天</button>
+          <button class="active" type="button" data-change-period="12h">12小时</button>
+          <button type="button" data-change-period="4h">4小时</button>
+          <button type="button" data-change-period="2h">2小时</button>
+        </div>
+      </div>
+
+      <div class="change-list" id="changeList"></div>
+    </section>
+
+    <section id="submit" class="view" data-panel="submit">
+      <div class="section-head">
+        <div>
+          <h2>提交</h2>
+          <p>提交店铺收录建议或举报风险店铺，相关信息会在审核后处理。</p>
+        </div>
+      </div>
+
+      <div class="submit-tabs" role="tablist" aria-label="提交类型">
+        <button class="active" type="button" data-submit-tab="shop" role="tab" aria-selected="true">提交店铺</button>
+        <button type="button" data-submit-tab="report" role="tab" aria-selected="false">提交举报</button>
+      </div>
+
+      <div class="submit-pane active" data-submit-pane="shop" role="tabpanel">
+        <form class="report-page-form submit-shop-form" id="shopSubmitForm">
+          <div class="field">
+            <label for="shopSubmitName">店铺名称</label>
+            <input id="shopSubmitName" name="shopName" type="text" placeholder="请输入店铺名称" required>
+          </div>
+          <div class="field">
+            <label for="shopSubmitUrl">店铺链接</label>
+            <input id="shopSubmitUrl" name="shopUrl" type="url" placeholder="https://..." required>
+          </div>
+          <div class="field">
+            <label for="shopSubmitPlatform">发卡系统</label>
+            <input id="shopSubmitPlatform" name="platform" type="text" placeholder="例如：独角数卡 / LDXP / 其他">
+          </div>
+          <div class="field">
+            <label for="shopSubmitImage">图片链接</label>
+            <input id="shopSubmitImage" name="imageUrl" type="url" placeholder="https://...">
+          </div>
+          <div class="field wide">
+            <label for="shopSubmitDesc">店铺介绍</label>
+            <textarea id="shopSubmitDesc" name="description" placeholder="请简单说明主营商品、特色或你推荐收录的原因"></textarea>
+          </div>
+          <div class="field">
+            <label for="shopSubmitContact">联系方式（不公开）</label>
+            <input id="shopSubmitContact" name="contact" type="text" placeholder="QQ / 微信 / 邮箱 / Telegram" required>
+          </div>
+          <div class="field wide">
+            <label for="shopSubmitRemark">备注</label>
+            <textarea id="shopSubmitRemark" name="remark" placeholder="补充说明，例如是否店主本人、是否有优惠或其他注意事项"></textarea>
+          </div>
+          <button class="submit-btn" type="submit">提交店铺</button>
+        </form>
+      </div>
+
+      <div class="submit-pane" data-submit-pane="report" role="tabpanel">
+        <div class="report-layout">
+          <form class="report-page-form" id="reportPageForm">
+            <div class="field">
+              <label for="publicReportTitle">标题</label>
+              <input id="publicReportTitle" name="title" type="text" placeholder="例如：付款后不发货并拉黑" required>
+            </div>
+            <div class="field">
+              <label for="publicReportShop">店铺</label>
+              <input id="publicReportShop" name="shopName" type="text" placeholder="请输入店铺名称或链接" required>
+            </div>
+            <div class="field">
+              <label for="publicReportContent">举报内容</label>
+              <textarea id="publicReportContent" name="content" placeholder="请说明订单时间、付款情况、沟通记录和损失金额。如有图片，请粘贴第三方图床或者网盘链接。" required></textarea>
+            </div>
+            <div class="field">
+              <label for="publicReportImage">图片链接</label>
+              <input id="publicReportImage" name="imageUrl" type="url" placeholder="https://...">
+            </div>
+            <div class="field">
+              <label for="publicReportContact">联系方式（不公开）</label>
+              <input id="publicReportContact" name="contact" type="text" placeholder="QQ / 微信 / 邮箱 / Telegram" required>
+            </div>
+            <button class="submit-btn" type="submit">提交举报</button>
+          </form>
+
+          <div class="approved-reports" id="approvedReports"></div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="view" data-panel="about">
+      <div class="section-head">
+        <div>
+          <h2>关于</h2>
+          <p>了解本站的数据来源、功能边界和后续计划。</p>
+        </div>
+      </div>
+      <article class="about-content rich-content" id="aboutContent">
+        <div class="empty-state">正在加载...</div>
+      </article>
+    </section>
+
+    <section id="exposure" class="view" data-panel="exposure">
+      <div class="search-panel">
+        <form class="search-bar" data-search-form>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10.8 18.1a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6Zm5.2-1.9 4.2 4.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <input type="search" placeholder="搜索骗子店铺、链接或曝光原因..." aria-label="搜索曝光店铺">
+          <button type="submit">搜索</button>
+        </form>
+      </div>
+
+      <div class="section-head">
+        <div>
+          <h2>骗子店铺曝光台</h2>
+          <p>展示用户提交的风险店铺信息，帮助更多人避坑。</p>
+        </div>
+      </div>
+
+      <div class="list">
+        <article class="exposure-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=220&q=80" alt="黑名单店铺缩略图">
+            <span class="badge">曝光</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">AI会员低价仓</h3>
+            <div class="exposure-link">链接：https://example-fake-shop.test</div>
+            <div class="reason-box">曝光原因：付款后未自动发货，客服长时间不回复，多名用户反馈订单被删除。</div>
+          </div>
+        </article>
+
+        <article class="exposure-card">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=220&q=80" alt="风险店铺缩略图">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Plus 秒发中心</h3>
+            <div class="exposure-link">链接：https://plus-fast-demo.test</div>
+            <div class="reason-box">曝光原因：宣传独享账号，实际为多人共享；账号频繁掉线且拒绝退款。</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="exposure-action">
+        <div>
+          <h2>我要曝光风险店铺</h2>
+          <p>提交网站名称、链接、原因和截图，审核后会进入曝光台列表。</p>
+        </div>
+        <button class="danger-btn" type="button" data-open-report>曝光</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="reportModal" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="reportTitle">提交曝光信息</h2>
+        <button class="icon-btn" type="button" aria-label="关闭弹窗" data-close-report>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <form class="report-form" data-report-form>
+        <div class="field">
+          <label for="reportName">标题</label>
+          <input id="reportName" name="title" type="text" placeholder="例如：付款后不发货并拉黑" required>
+        </div>
+        <div class="field">
+          <label for="siteName">网站名称</label>
+          <input id="siteName" name="site" type="text" placeholder="请输入店铺或网站名称" required>
+        </div>
+        <div class="field">
+          <label for="reason">曝光原因</label>
+          <textarea id="reason" name="reason" placeholder="请说明订单时间、付款情况、沟通记录和损失金额..." required></textarea>
+        </div>
+        <label class="upload-box">
+          <input type="file" name="screenshot" accept="image/*">
+          <span>
+            <strong>上传曝光截图</strong>
+            支持订单截图、聊天记录或付款凭证
+          </span>
+        </label>
+        <button class="submit-btn" type="submit">提交</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+    <div class="modal-card info-modal-card">
+      <div class="modal-head">
+        <h2 id="infoModalTitle">详情预览</h2>
+        <button class="icon-btn" type="button" aria-label="关闭弹窗" data-close-info>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="info-modal-body" id="infoModalBody"></div>
+      <div class="info-modal-actions" id="infoModalActions"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="homepageAdDetailModal" role="dialog" aria-modal="true" aria-labelledby="homepageAdDetailTitle">
+    <div class="modal-card homepage-ad-modal-card">
+      <div class="modal-head">
+        <h2 id="homepageAdDetailTitle">广告详情</h2>
+        <button class="icon-btn" type="button" aria-label="关闭广告详情" data-close-homepage-ad>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="homepage-ad-modal-body">
+        <div class="homepage-ad-detail-meta" id="homepageAdDetailMeta"></div>
+        <div class="homepage-ad-markdown" id="homepageAdDetailContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="commentModal" role="dialog" aria-modal="true" aria-labelledby="commentModalTitle">
+    <div class="modal-card comment-modal-card">
+      <div class="modal-head">
+        <h2 id="commentModalTitle">店铺评论</h2>
+        <button class="icon-btn" type="button" aria-label="关闭弹窗" data-close-comment>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="comment-modal-body">
+        <div class="comment-list" id="commentList"></div>
+        <form class="comment-form" id="commentForm">
+          <input id="commentNickname" name="nickname" type="text" maxlength="50" placeholder="昵称（可选）">
+          <textarea id="commentContent" name="content" maxlength="1000" placeholder="写下你对这个店铺的体验或提醒，提交后需审核才会展示" required></textarea>
+          <button class="submit-btn" type="submit">提交评论</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+    <div class="modal-card share-modal-card">
+      <div class="modal-head">
+        <h2 id="shareModalTitle">分享搜索结果</h2>
+        <button class="icon-btn" type="button" aria-label="关闭弹窗" data-close-share>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="share-modal-body">
+        <div class="share-qr">
+          <img id="shareQrImage" src="" alt="搜索结果分享二维码">
+        </div>
+        <div class="share-link-box">
+          <label for="shareUrlInput">分享链接</label>
+          <div class="share-link-row">
+            <input id="shareUrlInput" type="text" readonly>
+            <button type="button" id="copyShareBtn">复制</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">已收到提交，模板中可接入后端保存。</div>
+
+  <div class="guide-mask" id="guideMask" aria-hidden="true"></div>
+  <div class="guide-popover" id="guidePopover" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+    <div class="guide-step" id="guideStepText">第一步</div>
+    <h3 id="guideTitle">输入想查找的关键词</h3>
+    <p id="guideText">例如 gpt free、team、gemini pro、super grok。多个关键词可以用空格隔开，越具体越容易找到合适的商品。</p>
+    <div class="guide-actions">
+      <button class="guide-cancel" type="button" id="guideCancel">取消引导</button>
+      <button class="guide-next" type="button" id="guideNext">下一步</button>
+    </div>
+  </div>
+
+  <div class="disclaimer-overlay" id="disclaimerOverlay">
+    <div class="disclaimer-box">
+      <h2>免责声明</h2>
+      <p class="sub">请仔细阅读以下条款</p>
+      <ol>
+        <li><strong>数据来源说明</strong>本网站所展示的商品及店铺信息均收集于互联网公开渠道，仅作为信息聚合与展示之用。我们致力于提供便捷的信息检索服务，但不对任何店铺的真实性、合法性、商品质量、服务能力及交易安全性做任何形式的担保或承诺。</li>
+        <li><strong>交易风险提示</strong>用户通过本网站获取店铺信息后，所进行的任何交易行为均属于用户与第三方店铺之间的独立民事行为。本网站不参与、不介入、不担保任何实际交易过程。请用户在交易前务必自行核实店铺资质、审慎评估交易风险，谨慎做出消费决策。</li>
+        <li><strong>责任边界</strong>因使用本网站信息而导致的任何直接或间接损失（包括但不限于财产损失、信息泄露、服务纠纷等），本网站及运营方不承担任何法律责任。如用户发现店铺信息存在虚假、违法或侵权内容，请及时向我们反馈，我们将依法予以处理。</li>
+        <li><strong>信息更新</strong>网络信息可能存在滞后或变更，本网站不保证所有信息的实时准确性。建议用户在交易前与店铺方直接确认商品状态及交易细节。</li>
+        <li><strong>法律适用</strong>本免责声明的解释权及修订权归本网站所有。如对本声明有任何异议，请停止使用本网站服务。</li>
+      </ol>
+      <div class="btn-wrap"><button type="button" id="disclaimerAccept">我已阅读并同意</button></div>
+    </div>
+  </div>
+
+  <script src="./goods-data.js"></script>
+  <script>window.FAKA_SITE_CONFIG = {"guideKeywords":["gpt free","team","gemini pro","super grok"]};</script>
+  <script>
+    const stockTip = "由于时效性问题，库存显示可能不准确，以实际购买时的库存为准";
+    const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23eef3ef'/%3E%3Cpath d='M280 210h80M320 170v80' stroke='%2311a34a' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E";
+    const PAGE_SIZE = 24;
+    const DEFAULT_KEYWORD = "gpt free";
+    const guideKeywords = Array.isArray(window.FAKA_SITE_CONFIG?.guideKeywords) && window.FAKA_SITE_CONFIG.guideKeywords.length
+      ? window.FAKA_SITE_CONFIG.guideKeywords
+      : ["gpt free", "team", "gemini pro", "super grok"];
+    let currentKeyword = "";
+    let currentSort = "price_asc";
+    let currentOffset = 0;
+    let isLoading = false;
+    let hasMore = true;
+    let currentChangeType = "price";
+    let currentChangePeriod = "12h";
+    let minPriceFilter = "";
+    let maxPriceFilter = "";
+    const previewItems = new Map();
+    let currentCommentShop = null;
+    const initialShareKeyword = document.body.dataset.shareKeyword || "";
+    let currentSearchIsShareable = Boolean(initialShareKeyword);
+    const shareBasePath = "/search/";
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    const localProducts = Array.isArray(window.FAKA_LOCAL_DATA?.products)
+      ? window.FAKA_LOCAL_DATA.products
+      : [];
+    const localHotKeywords = Array.isArray(window.FAKA_LOCAL_DATA?.keywords) && window.FAKA_LOCAL_DATA.keywords.length
+      ? window.FAKA_LOCAL_DATA.keywords
+      : guideKeywords;
+
+    function localProductMatches(item, keyword) {
+      const value = String(keyword || "").trim().toLowerCase();
+      if (!value) return true;
+      return [item.title, item.shopName, item.desc, item.platform]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase()
+        .includes(value);
+    }
+
+    function localProductRows(keyword, sortBy, offset = 0, limit = PAGE_SIZE) {
+      const min = minPriceFilter === "" ? null : Number(minPriceFilter);
+      const max = maxPriceFilter === "" ? null : Number(maxPriceFilter);
+      const rows = localProducts
+        .filter((item) => Number(item.stock || 0) > 0)
+        .filter((item) => localProductMatches(item, keyword))
+        .filter((item) => min === null || Number(item.price) >= min)
+        .filter((item) => max === null || Number(item.price) <= max)
+        .sort((a, b) => {
+          if (sortBy === "stock") {
+            return Number(b.stock || 0) - Number(a.stock || 0) || Number(a.price || 0) - Number(b.price || 0);
+          }
+          return Number(a.price || 0) - Number(b.price || 0) || Number(b.stock || 0) - Number(a.stock || 0);
+        });
+      return rows.slice(Number(offset) || 0, (Number(offset) || 0) + (Number(limit) || PAGE_SIZE));
+    }
+
+    function localShopRows(keyword = "") {
+      const value = String(keyword || "").trim().toLowerCase();
+      const shops = new Map();
+      localProducts.forEach((item) => {
+        const shopName = String(item.shopName || "未知店铺");
+        const shopSearchText = [shopName, item.title, item.desc].filter(Boolean).join(" ").toLowerCase();
+        if (value && !shopSearchText.includes(value)) return;
+        if (shops.has(item.shopKey || shopName)) return;
+        shops.set(item.shopKey || shopName, {
+          guid: item.shopGuid,
+          key: item.shopKey,
+          name: shopName,
+          desc: "商品数据来自公开页面快照，购买前请自行核验店铺信息。",
+          image: item.image,
+          createAt: item.createAt || item.updateTime || "",
+          commentCount: 0,
+          platform: "发卡平台",
+          url: item.shopUrl
+        });
+      });
+      return [...shops.values()];
+    }
+
+    async function apiJson(url, options = {}) {
+      if (window.FAKA_LOCAL_DATA) {
+        const requestUrl = new URL(url, window.location.href);
+        const path = requestUrl.pathname;
+
+        if (path.endsWith("/api/goods")) {
+          return localProductRows(
+            requestUrl.searchParams.get("keyword") || DEFAULT_KEYWORD,
+            requestUrl.searchParams.get("sortBy") || "price_asc",
+            requestUrl.searchParams.get("offset") || 0,
+            requestUrl.searchParams.get("limit") || PAGE_SIZE
+          );
+        }
+
+        if (path.endsWith("/api/search")) {
+          let payload = {};
+          try {
+            payload = typeof options.body === "string" ? JSON.parse(options.body) : (options.body || {});
+          } catch {
+            payload = {};
+          }
+          return {
+            keyword: payload.keyword || DEFAULT_KEYWORD,
+            goods: localProductRows(payload.keyword || DEFAULT_KEYWORD, payload.sortBy || "price_asc", payload.offset || 0, payload.limit || PAGE_SIZE)
+          };
+        }
+
+        if (path.endsWith("/api/shops")) {
+          return localShopRows(requestUrl.searchParams.get("keyword") || "");
+        }
+
+        if (path.endsWith("/api/search/hot")) {
+          const limit = Number(requestUrl.searchParams.get("limit") || 8);
+          return localHotKeywords.slice(0, limit).map((keyword) => ({ keyword }));
+        }
+
+        if (path.endsWith("/api/about")) {
+          return {
+            content: "## 关于 AI号探\n\n这是一个用于查看公开 AI 账号商品信息的静态恢复版。商品价格、库存和店铺状态可能随时变化，购买前请到商品链接自行核验。"
+          };
+        }
+
+        if (path.endsWith("/api/changes") || path.endsWith("/api/reports") || path.endsWith("/api/shop-comments")) {
+          return options.method === "POST" ? { ok: true } : [];
+        }
+
+        if (path.endsWith("/api/shop-submissions")) {
+          return { ok: true };
+        }
+      }
+
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+      return response.json();
+    }
+
+    function shareKeyword() {
+      const keyword = String(currentKeyword || "").trim();
+      return currentSearchIsShareable && keyword ? keyword : "";
+    }
+
+    function shareUrlForKeyword(keyword) {
+      return new URL(shareBasePath + encodeURIComponent(keyword), location.origin).toString();
+    }
+
+    function updateShareButton() {
+      document.getElementById("shareSearchBtn").classList.toggle("visible", Boolean(shareKeyword()));
+    }
+
+    function formatPrice(value) {
+      const number = Number(value || 0);
+      return number.toFixed(2);
+    }
+
+    function formatCount(value) {
+      return Number(value || 0).toLocaleString("zh-CN");
+    }
+
+    function formatTooltipDate(value) {
+      const raw = String(value || "").trim();
+      const match = raw.match(/^(\d{4}-\d{2}-\d{2})(?:[ T](\d{2}:\d{2}))?/);
+      if (match) {
+        return `${match[1]} ${match[2] || "00:00"}`;
+      }
+
+      const date = new Date(raw);
+      if (Number.isNaN(date.getTime())) return "未知";
+      const pad = (n) => String(n).padStart(2, "0");
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    }
+
+    function goUrl(url, kind, shopGuid = "") {
+      return url || "";
+    }
+
+    function detailUrl(type, key) {
+      return "";
+    }
+
+    function sanitizeContentHtml(value) {
+      const raw = String(value || "").trim();
+      if (!raw) return "";
+      const template = document.createElement("template");
+      template.innerHTML = raw;
+      const allowedTags = new Set(["A", "B", "BLOCKQUOTE", "BR", "CODE", "DIV", "EM", "H1", "H2", "H3", "H4", "H5", "H6", "HR", "I", "IMG", "LI", "OL", "P", "PRE", "SPAN", "STRONG", "TABLE", "TBODY", "TD", "TH", "THEAD", "TR", "U", "UL"]);
+      const allowedAttrs = {
+        A: new Set(["href", "title"]),
+        IMG: new Set(["src", "alt", "title"]),
+        TD: new Set(["colspan", "rowspan"]),
+        TH: new Set(["colspan", "rowspan"])
+      };
+
+      function cleanNode(node) {
+        if (node.nodeType === Node.TEXT_NODE) return;
+        if (node.nodeType !== Node.ELEMENT_NODE) {
+          node.remove();
+          return;
+        }
+
+        const tag = node.tagName;
+        if (!allowedTags.has(tag)) {
+          const text = document.createTextNode(node.textContent || "");
+          node.replaceWith(text);
+          return;
+        }
+
+        [...node.attributes].forEach((attr) => {
+          const name = attr.name.toLowerCase();
+          const value = attr.value || "";
+          const allowed = allowedAttrs[tag]?.has(name);
+          const isUnsafeUrl = (name === "href" || name === "src") && /^\s*(javascript|data):/i.test(value);
+          if (!allowed || name.startsWith("on") || isUnsafeUrl) {
+            node.removeAttribute(attr.name);
+          }
+        });
+
+        if (tag === "A") {
+          node.setAttribute("target", "_blank");
+          node.setAttribute("rel", "nofollow noopener");
+        }
+
+        if (tag === "IMG" && !node.getAttribute("alt")) {
+          node.setAttribute("alt", "商品介绍图片");
+        }
+
+        [...node.childNodes].forEach(cleanNode);
+      }
+
+      [...template.content.childNodes].forEach(cleanNode);
+      collapseTrailingBlankBlocks(template.content);
+      const html = template.innerHTML.trim();
+      return html || escapeHtml(raw).replace(/\n/g, "<br>");
+    }
+
+    function markdownToHtml(value) {
+      const lines = String(value || "").replace(/\r\n?/g, "\n").split("\n");
+      const blocks = [];
+      let paragraph = [];
+      let list = [];
+
+      function inline(text) {
+        return escapeHtml(text)
+          .replace(/!\[([^\]]*)\]\((https?:\/\/[^)\s]+)\)/g, '<img src="$2" alt="$1">')
+          .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2">$1</a>')
+          .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+          .replace(/(^|[\s>])(https?:\/\/[^\s<]+\.(?:png|jpe?g|gif|webp|svg)(?:\?[^\s<]*)?)/gi, '$1<img src="$2" alt="关于图片">')
+          .replace(/(^|[\s>])(https?:\/\/[^\s<]+)/g, '$1<a href="$2">$2</a>');
+      }
+
+      function flushParagraph() {
+        if (!paragraph.length) return;
+        blocks.push(`<p>${inline(paragraph.join(" "))}</p>`);
+        paragraph = [];
+      }
+
+      function flushList() {
+        if (!list.length) return;
+        blocks.push(`<ul>${list.map((item) => `<li>${inline(item)}</li>`).join("")}</ul>`);
+        list = [];
+      }
+
+      lines.forEach((line) => {
+        const trimmed = line.trim();
+        if (!trimmed) {
+          flushParagraph();
+          flushList();
+          return;
+        }
+        const heading = trimmed.match(/^(#{1,3})\s+(.+)$/);
+        if (heading) {
+          flushParagraph();
+          flushList();
+          blocks.push(`<h${heading[1].length}>${inline(heading[2])}</h${heading[1].length}>`);
+          return;
+        }
+        const item = trimmed.match(/^[-*]\s+(.+)$/);
+        if (item) {
+          flushParagraph();
+          list.push(item[1]);
+          return;
+        }
+        flushList();
+        paragraph.push(trimmed);
+      });
+
+      flushParagraph();
+      flushList();
+      return sanitizeContentHtml(blocks.join(""));
+    }
+
+    function renderMarkdownOrHtml(value) {
+      const source = String(value || "").trim();
+      if (!source) return "";
+      const containsHtml = /<\/?(?:a|blockquote|br|code|div|em|h[1-6]|hr|img|li|ol|p|pre|span|strong|table|tbody|td|th|thead|tr|ul)\b[^>]*>/i.test(source);
+      return containsHtml ? sanitizeContentHtml(source) : markdownToHtml(source);
+    }
+
+    function decodeBase64Utf8(value) {
+      if (!value) return "";
+      try {
+        const bytes = Uint8Array.from(atob(value), (character) => character.charCodeAt(0));
+        return new TextDecoder("utf-8").decode(bytes);
+      } catch {
+        return "";
+      }
+    }
+
+    function openHomepageAdDetail(card) {
+      const detailModal = document.getElementById("homepageAdDetailModal");
+      const title = document.getElementById("homepageAdDetailTitle");
+      const meta = document.getElementById("homepageAdDetailMeta");
+      const content = document.getElementById("homepageAdDetailContent");
+      const richContent = decodeBase64Utf8(card.dataset.adContentBase64 || "");
+
+      title.textContent = card.dataset.adTitle || "广告详情";
+      meta.replaceChildren();
+      [card.dataset.adTag, card.dataset.adSponsor].filter(Boolean).forEach((text) => {
+        const item = document.createElement("span");
+        item.textContent = text;
+        meta.appendChild(item);
+      });
+      meta.hidden = !meta.childElementCount;
+      content.innerHTML = richContent.trim()
+        ? renderMarkdownOrHtml(richContent)
+        : "<p>暂无广告详情。</p>";
+      detailModal.classList.add("active");
+    }
+
+    function bindHomepageAdDetails() {
+      document.querySelectorAll("[data-home-ad-detail]").forEach((card) => {
+        card.addEventListener("click", () => openHomepageAdDetail(card));
+      });
+    }
+
+    function collapseTrailingBlankBlocks(root) {
+      let keptBlank = false;
+      while (root.lastChild) {
+        const node = root.lastChild;
+        const isWhitespaceText = node.nodeType === Node.TEXT_NODE && !node.textContent.trim();
+        const isBlankBr = node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR";
+        const isBlankParagraph = node.nodeType === Node.ELEMENT_NODE &&
+          ["P", "DIV"].includes(node.tagName) &&
+          !node.textContent.trim() &&
+          !node.querySelector("img,table,ul,ol");
+
+        if (!isWhitespaceText && !isBlankBr && !isBlankParagraph) break;
+
+        if (isWhitespaceText) {
+          node.remove();
+          continue;
+        }
+
+        if (keptBlank) {
+          node.remove();
+        } else {
+          keptBlank = true;
+          if (isBlankParagraph) {
+            node.innerHTML = "<br>";
+          }
+        }
+      }
+    }
+
+    function previewId(type, key, index) {
+      return `${type}-${key || index}`;
+    }
+
+    function renderPreviewTitle(id, title) {
+      return `<button class="title-open" type="button" data-preview-id="${escapeHtml(id)}">${escapeHtml(title)}</button>`;
+    }
+
+    function openInfoModal(id) {
+      const item = previewItems.get(id);
+      if (!item) return;
+      const modal = document.getElementById("infoModal");
+      const title = document.getElementById("infoModalTitle");
+      const body = document.getElementById("infoModalBody");
+      const actions = document.getElementById("infoModalActions");
+      const isGoods = item.type === "goods";
+      const detail = detailUrl(isGoods ? "goods" : "shop", item.key);
+      const go = isGoods ? goUrl(item.linkUrl, "goods") : goUrl(item.url, "shop", item.guid);
+      const descHtml = sanitizeContentHtml(item.desc || item.description || "");
+
+      title.textContent = isGoods ? item.title : item.name;
+      body.innerHTML = `
+        <div class="info-modal-summary">
+          <img src="${escapeHtml(item.image || placeholderImage)}" alt="${escapeHtml(isGoods ? item.title : item.name)}图片" onerror="this.onerror=null;this.src='${placeholderImage}'">
+          <div class="info-modal-meta">
+            ${isGoods ? `
+              <div>店铺：${escapeHtml(item.shopName || "未知店铺")}</div>
+              <div>库存：${escapeHtml(item.stock ?? "未知")}</div>
+              <div class="info-modal-price">¥${escapeHtml(formatPrice(item.price))}</div>
+            ` : `
+              <div>发卡系统：${escapeHtml(item.platform || "未知")}</div>
+              <div>开店时间：${escapeHtml(item.createAt || "未知")}</div>
+            `}
+          </div>
+        </div>
+        <div class="info-modal-desc">${descHtml || escapeHtml(isGoods ? "暂无商品介绍，请前往详情页或购买页核对套餐内容。" : "暂无店铺介绍，请前往详情页或店铺页面核对信息。")}</div>
+        <div class="modal-risk"><strong>风险提示</strong>本站只做公开数据展示，与商家无任何关联，不参与交易也不担保商品和服务。前往第三方页面前请自行核验网址、套餐、售后和收款方式，谨防被骗。</div>
+      `;
+      actions.innerHTML = `
+        ${go ? `<a class="buy" href="${escapeHtml(go)}" target="_blank" rel="nofollow noopener">前往购买</a>` : ""}
+        ${detail ? `<a class="detail" href="${escapeHtml(detail)}">查看详情</a>` : ""}
+      `;
+      modal.classList.add("active");
+    }
+
+    function bindPreviewTitles(scope = document) {
+      scope.querySelectorAll("[data-preview-id]").forEach((button) => {
+        if (button.dataset.previewBound === "1") return;
+        button.dataset.previewBound = "1";
+        button.addEventListener("click", () => openInfoModal(button.dataset.previewId));
+      });
+    }
+
+    async function openCommentModal(id) {
+      const item = previewItems.get(id);
+      if (!item) return;
+      currentCommentShop = item;
+      document.getElementById("commentModalTitle").textContent = `${item.name} - 店铺评论`;
+      document.getElementById("commentList").innerHTML = `<div class="empty-state">正在加载评论...</div>`;
+      document.getElementById("commentForm").reset();
+      document.getElementById("commentModal").classList.add("active");
+      await loadShopComments(item);
+    }
+
+    async function loadShopComments(item) {
+      const params = new URLSearchParams();
+      if (item.key) params.set("shopKey", item.key);
+      if (item.guid) params.set("shopGuid", item.guid);
+      const wrap = document.getElementById("commentList");
+      try {
+        const rows = await apiJson(`/api/shop-comments?${params}`);
+        wrap.innerHTML = rows.length ? rows.map((comment) => `
+          <article class="comment-item">
+            <strong>${escapeHtml(comment.nickname || "匿名用户")} <span class="store-name">${escapeHtml(comment.createdAt || "")}</span></strong>
+            <p>${escapeHtml(comment.content)}</p>
+          </article>
+        `).join("") : `<div class="empty-state">暂无已审核评论</div>`;
+      } catch (error) {
+        wrap.innerHTML = `<div class="empty-state">评论加载失败</div>`;
+        console.error(error);
+      }
+    }
+
+    function bindCommentButtons(scope = document) {
+      scope.querySelectorAll("[data-comment-id]").forEach((button) => {
+        if (button.dataset.commentBound === "1") return;
+        button.dataset.commentBound = "1";
+        button.addEventListener("click", () => openCommentModal(button.dataset.commentId));
+      });
+    }
+
+    function renderProducts(products, append = false) {
+      const productList = document.getElementById("productList");
+      if (!append) {
+        productList.innerHTML = "";
+      }
+      if (!products.length) {
+        if (!append) {
+          productList.innerHTML = `<div class="empty-state">没有找到有库存的商品</div>`;
+        }
+        hasMore = false;
+        return;
+      }
+
+      const html = products.map((item, index) => {
+        const id = previewId("goods", item.key, currentOffset + index);
+        const updateTip = `数据最后更新时间：${formatTooltipDate(item.updateTime)}`;
+        previewItems.set(id, { ...item, type: "goods" });
+        return `
+        <article class="product-card">
+          <div class="thumb">
+            <img src="${escapeHtml(item.image || placeholderImage)}" alt="${escapeHtml(item.title)}缩略图" onerror="this.onerror=null;this.src='${placeholderImage}'">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${renderPreviewTitle(id, item.title)}</h3>
+            <div class="product-info-row">
+              <div class="store-name" title="${escapeHtml(updateTip)}">${item.shopKey ? `<a href="${escapeHtml(detailUrl("shop", item.shopKey))}">${escapeHtml(item.shopName || "未知店铺")}</a>` : escapeHtml(item.shopName || "未知店铺")}</div>
+              <div class="meta-row">
+                <span class="stock">库存 ${escapeHtml(item.stock)}<span class="stock-help" tabindex="0" data-tooltip="${escapeHtml(stockTip)}">?</span></span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="price"><small>¥</small>${escapeHtml(formatPrice(item.price))}</div>
+            </div>
+          </div>
+        </article>
+      `}).join("");
+
+      if (append) {
+        productList.insertAdjacentHTML("beforeend", html);
+      } else {
+        productList.innerHTML = html;
+      }
+      bindPreviewTitles(productList);
+      hasMore = products.length >= PAGE_SIZE;
+    }
+
+    function renderStores(stores) {
+      const storeList = document.getElementById("storeList");
+      if (!stores.length) {
+        storeList.innerHTML = `<div class="empty-state">没有找到匹配的店铺</div>`;
+        return;
+      }
+
+      storeList.innerHTML = stores.map((item, index) => {
+        const id = previewId("shop", item.key, index);
+        previewItems.set(id, { ...item, type: "shop" });
+        return `
+        <article class="store-card">
+          <div class="thumb">
+            <img src="${escapeHtml(item.image || placeholderImage)}" alt="${escapeHtml(item.name)}缩略图" onerror="this.onerror=null;this.src='${placeholderImage}'">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${renderPreviewTitle(id, item.name)}</h3>
+            <p class="store-desc">${escapeHtml(item.desc || "暂无店铺介绍")}</p>
+            <div class="store-meta">
+              <span title="开店时间">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                ${escapeHtml(item.createAt || "未知")}
+              </span>
+              <button class="comment-open" type="button" data-comment-id="${escapeHtml(id)}" title="查看和提交评论">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1.4-5.2A8 8 0 1 1 21 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                评论${Number(item.commentCount || 0) > 0 ? ` ${escapeHtml(formatCount(item.commentCount))}` : ""}
+              </button>
+            </div>
+          </div>
+        </article>
+      `}).join("");
+      bindPreviewTitles(storeList);
+      bindCommentButtons(storeList);
+    }
+
+    function renderHotSearch(rows) {
+      const wrap = document.querySelector(".hot-keywords");
+      wrap.innerHTML = `<span>最近热搜</span>` + rows.map((item) => `
+        <button class="keyword" type="button">${escapeHtml(item.keyword)}</button>
+      `).join("");
+      bindHotKeywords();
+    }
+
+    async function loadProducts(keyword = "", sort = "price_asc", offset = 0, append = false, trackSearch = false) {
+      isLoading = true;
+      try {
+        const activeKeyword = String(keyword || "").trim() || DEFAULT_KEYWORD;
+        if (trackSearch && activeKeyword && offset === 0) {
+          const result = await apiJson("/api/search", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ keyword: activeKeyword, limit: PAGE_SIZE, sortBy: sort, offset })
+          });
+          renderProducts(result.goods, append);
+          await loadHotSearch();
+        } else {
+          const params = new URLSearchParams({ limit: PAGE_SIZE, sortBy: sort, offset });
+          params.set("keyword", activeKeyword);
+          const rows = await apiJson(`/api/goods?${params}`);
+          renderProducts(rows, append);
+        }
+        updateShareButton();
+      } catch (error) {
+        notify("加载失败，请稍后再试", 2400);
+        console.error(error);
+      } finally {
+        isLoading = false;
+      }
+    }
+
+    async function loadMore() {
+      if (isLoading || !hasMore) return;
+      currentOffset += PAGE_SIZE;
+      await loadProducts(currentKeyword, currentSort, currentOffset, true, false);
+    }
+
+    function changeSort(sort) {
+      if (sort === currentSort) return;
+      currentSort = sort;
+      currentOffset = 0;
+      document.querySelectorAll(".sort-tabs button").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.sort === sort);
+      });
+      loadProducts(currentKeyword, currentSort, 0, false, false);
+    }
+
+    function validPriceInput(value) {
+      if (String(value || "").trim() === "") return "";
+      const number = Number(value);
+      return Number.isFinite(number) && number >= 0 ? String(number) : null;
+    }
+
+    function priceFilterLabel() {
+      if (minPriceFilter !== "" && maxPriceFilter !== "") return `￥${minPriceFilter} - ￥${maxPriceFilter}`;
+      if (minPriceFilter !== "") return `不低于 ￥${minPriceFilter}`;
+      if (maxPriceFilter !== "") return `不高于 ￥${maxPriceFilter}`;
+      return "不设置上下限时显示全部价格";
+    }
+
+    function updatePriceFilterUI() {
+      const toggle = document.querySelector("[data-price-filter-toggle]");
+      const hint = document.getElementById("priceFilterHint");
+      if (toggle) {
+        const active = minPriceFilter !== "" || maxPriceFilter !== "";
+        toggle.classList.toggle("active", active);
+        toggle.setAttribute("aria-label", active ? `价格区间：${priceFilterLabel()}` : "设置价格区间");
+      }
+      if (hint) hint.textContent = priceFilterLabel();
+    }
+
+    function applyPriceFilter() {
+      const min = validPriceInput(document.getElementById("minPriceInput")?.value);
+      const max = validPriceInput(document.getElementById("maxPriceInput")?.value);
+      if (min === null || max === null) {
+        notify("请输入大于等于 0 的有效价格", 2200);
+        return;
+      }
+      if (min !== "" && max !== "" && Number(min) > Number(max)) {
+        notify("最低价不能高于最高价", 2200);
+        return;
+      }
+      minPriceFilter = min;
+      maxPriceFilter = max;
+      currentOffset = 0;
+      updatePriceFilterUI();
+      document.getElementById("priceFilterPopover")?.setAttribute("hidden", "");
+      document.querySelector("[data-price-filter-toggle]")?.setAttribute("aria-expanded", "false");
+      notify(`已按 ${priceFilterLabel()} 筛选`, 1800);
+      loadProducts(currentKeyword, currentSort, 0, false, false);
+    }
+
+    function clearPriceFilter() {
+      minPriceFilter = "";
+      maxPriceFilter = "";
+      const minInput = document.getElementById("minPriceInput");
+      const maxInput = document.getElementById("maxPriceInput");
+      if (minInput) minInput.value = "";
+      if (maxInput) maxInput.value = "";
+      updatePriceFilterUI();
+      currentOffset = 0;
+      document.getElementById("priceFilterPopover")?.setAttribute("hidden", "");
+      document.querySelector("[data-price-filter-toggle]")?.setAttribute("aria-expanded", "false");
+      notify("已清除价格筛选", 1600);
+      loadProducts(currentKeyword, currentSort, 0, false, false);
+    }
+
+    async function loadStores(keyword = "") {
+      const url = keyword
+        ? `/api/shops?keyword=${encodeURIComponent(keyword)}`
+        : "/api/shops";
+      const rows = await apiJson(url);
+      renderStores(rows);
+    }
+
+    async function loadHotSearch() {
+      const rows = await apiJson("/api/search/hot?limit=8");
+      renderHotSearch(rows);
+    }
+
+    function formatChangeValue(value) {
+      const number = Number(value || 0);
+      return currentChangeType === "price" ? "¥" + number.toFixed(2) : String(Math.round(number));
+    }
+
+    function renderChanges(rows) {
+      const list = document.getElementById("changeList");
+      if (!rows.length) {
+        list.innerHTML = `<div class="empty-state">当前周期暂无异动数据</div>`;
+        return;
+      }
+
+      list.innerHTML = rows.map((item) => {
+        const diff = Number(item.diff || 0);
+        const up = diff > 0;
+        const diffClass = up ? "up" : "down";
+        const sign = up ? "+" : "-";
+        const absDiff = Math.abs(diff);
+        const goodsLink = item.goodsUrl ? `<a href="${escapeHtml(goUrl(item.goodsUrl, "goods"))}" target="_blank" rel="noopener">${escapeHtml(item.goodsTitle)}</a>` : escapeHtml(item.goodsTitle);
+        const shopLink = item.shopUrl ? `<a href="${escapeHtml(goUrl(item.shopUrl, "shop", item.shopGuid))}" target="_blank" rel="noopener">${escapeHtml(item.shopName || "未知店铺")}</a>` : escapeHtml(item.shopName || "未知店铺");
+        return `
+          <article class="change-card">
+            <div>
+              <h3 class="change-title">${goodsLink}</h3>
+              <div class="change-shop">${shopLink}</div>
+            </div>
+            <div class="change-values">
+              <div class="change-diff ${diffClass}">${sign}${escapeHtml(formatChangeValue(absDiff))}</div>
+              <div class="change-range">${escapeHtml(formatChangeValue(item.periodStartValue))} → ${escapeHtml(formatChangeValue(item.periodEndValue))}</div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    async function loadChanges() {
+      const rows = await apiJson(`/api/changes?type=${encodeURIComponent(currentChangeType)}&period=${encodeURIComponent(currentChangePeriod)}`);
+      renderChanges(rows);
+    }
+
+    function renderReports(rows) {
+      const wrap = document.getElementById("approvedReports");
+      if (!rows.length) {
+        wrap.innerHTML = `<div class="empty-state">暂无已通过的举报信息</div>`;
+        return;
+      }
+
+      wrap.innerHTML = rows.map((item) => `
+        <article class="report-card">
+          <h3>${escapeHtml(item.title)}</h3>
+          <div class="report-shop">店铺：${escapeHtml(item.shopName)}</div>
+          <p class="report-content">${escapeHtml(item.content)}</p>
+          ${item.imageUrl ? `<div class="report-meta">图片：<a href="${escapeHtml(item.imageUrl)}" target="_blank" rel="noopener">${escapeHtml(item.imageUrl)}</a></div>` : ""}
+          <div class="report-meta">举报人：${escapeHtml(item.contact || "已脱敏")} · 时间：${escapeHtml(item.createdAt || "")}</div>
+        </article>
+      `).join("");
+    }
+
+    async function loadReports() {
+      const rows = await apiJson("/api/reports");
+      renderReports(rows);
+    }
+
+    async function loadAbout() {
+      const data = await apiJson("/api/about");
+      document.getElementById("aboutContent").innerHTML = markdownToHtml(data.content || "");
+    }
+
+    const navButtons = document.querySelectorAll("[data-view]");
+    const panels = document.querySelectorAll("[data-panel]");
+    const modal = document.getElementById("reportModal");
+    const infoModal = document.getElementById("infoModal");
+    const homepageAdDetailModal = document.getElementById("homepageAdDetailModal");
+    const commentModal = document.getElementById("commentModal");
+    const shareModal = document.getElementById("shareModal");
+    const toast = document.getElementById("toast");
+
+    function notify(message, duration = 1800) {
+      toast.textContent = message;
+      toast.classList.add("active");
+      setTimeout(() => toast.classList.remove("active"), duration);
+    }
+
+    function showSubmitTab(name) {
+      document.querySelectorAll("[data-submit-tab]").forEach((button) => {
+        const active = button.dataset.submitTab === name;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      document.querySelectorAll("[data-submit-pane]").forEach((pane) => {
+        pane.classList.toggle("active", pane.dataset.submitPane === name);
+      });
+    }
+
+    function showPanel(name) {
+      if (name === "submit-shop") {
+        showSubmitTab("shop");
+        name = "submit";
+      } else if (name === "report") {
+        showSubmitTab("report");
+        name = "submit";
+      }
+      navButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.view === name);
+      });
+      panels.forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.panel === name);
+      });
+      history.replaceState(null, "", "#" + name);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => showPanel(button.dataset.view));
+    });
+
+    document.querySelector(".brand").addEventListener("click", (event) => {
+      event.preventDefault();
+      showPanel("home");
+    });
+
+    window.addEventListener("hashchange", () => {
+      const name = location.hash.replace("#", "");
+      if (["home", "stores", "submit", "submit-shop", "changes", "report", "exposure", "about"].includes(name)) {
+        showPanel(name);
+      }
+    });
+
+    document.querySelectorAll("[data-submit-tab]").forEach((button) => {
+      button.addEventListener("click", () => showSubmitTab(button.dataset.submitTab));
+    });
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const input = document.getElementById("shareUrlInput");
+      input.focus();
+      input.select();
+      document.execCommand("copy");
+    }
+
+    async function openShareModal() {
+      const keyword = shareKeyword();
+      if (!keyword) {
+        notify("请先输入关键词搜索后再分享", 2200);
+        return;
+      }
+
+      const url = shareUrlForKeyword(keyword);
+      document.getElementById("shareUrlInput").value = url;
+      document.getElementById("shareQrImage").src = `/api/qr?text=${encodeURIComponent(url)}`;
+      shareModal.classList.add("active");
+
+      try {
+        await copyText(url);
+        notify("分享链接已复制到剪切板", 2200);
+      } catch (error) {
+        notify("分享链接已生成，可手动复制", 2400);
+        console.error(error);
+      }
+    }
+
+    document.getElementById("shareSearchBtn").addEventListener("click", openShareModal);
+
+    document.getElementById("copyShareBtn").addEventListener("click", async () => {
+      const url = document.getElementById("shareUrlInput").value;
+      try {
+        await copyText(url);
+        notify("分享链接已复制到剪切板", 2200);
+      } catch (error) {
+        notify("复制失败，请手动复制", 2200);
+        console.error(error);
+      }
+    });
+
+    document.querySelectorAll(".sort-tabs button").forEach((button) => {
+      if (button.dataset.sort) {
+        button.addEventListener("click", () => changeSort(button.dataset.sort));
+      }
+    });
+
+    const priceFilterToggle = document.querySelector("[data-price-filter-toggle]");
+    const priceFilterPopover = document.getElementById("priceFilterPopover");
+    priceFilterToggle?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isHidden = priceFilterPopover?.hasAttribute("hidden");
+      if (!priceFilterPopover) return;
+      if (isHidden) {
+        priceFilterPopover.removeAttribute("hidden");
+        priceFilterToggle.setAttribute("aria-expanded", "true");
+        document.getElementById("minPriceInput")?.focus();
+      } else {
+        priceFilterPopover.setAttribute("hidden", "");
+        priceFilterToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.querySelector("[data-price-filter-apply]")?.addEventListener("click", applyPriceFilter);
+    document.querySelector("[data-price-filter-clear]")?.addEventListener("click", clearPriceFilter);
+    ["minPriceInput", "maxPriceInput"].forEach((id) => {
+      document.getElementById(id)?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") applyPriceFilter();
+      });
+    });
+    document.addEventListener("click", (event) => {
+      if (!priceFilterPopover || priceFilterPopover.hasAttribute("hidden")) return;
+      if (priceFilterPopover.contains(event.target) || priceFilterToggle?.contains(event.target)) return;
+      priceFilterPopover.setAttribute("hidden", "");
+      priceFilterToggle?.setAttribute("aria-expanded", "false");
+    });
+    updatePriceFilterUI();
+
+    document.querySelectorAll("[data-change-type]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        currentChangeType = button.dataset.changeType;
+        document.querySelectorAll("[data-change-type]").forEach((btn) => btn.classList.toggle("active", btn === button));
+        await loadChanges();
+      });
+    });
+
+    document.querySelectorAll("[data-change-period]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        currentChangePeriod = button.dataset.changePeriod;
+        document.querySelectorAll("[data-change-period]").forEach((btn) => btn.classList.toggle("active", btn === button));
+        await loadChanges();
+      });
+    });
+
+    let scrollTimer = null;
+    window.addEventListener("scroll", () => {
+      if (scrollTimer) clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        if (isLoading || !hasMore) return;
+        const scrollBottom = window.innerHeight + window.scrollY;
+        if (scrollBottom >= document.body.scrollHeight - 600) {
+          loadMore();
+        }
+      }, 150);
+    });
+
+    function bindHotKeywords() {
+      document.querySelectorAll(".keyword").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const keyword = button.textContent.trim();
+          const input = document.querySelector("#home input[type='search']");
+          input.value = keyword;
+          showPanel("home");
+          notify("正在搜索：" + keyword);
+          currentKeyword = keyword;
+          currentSearchIsShareable = Boolean(keyword);
+          currentOffset = 0;
+          try {
+            await loadProducts(currentKeyword, currentSort, 0, false, true);
+          } catch (error) {
+            notify("搜索失败，请稍后再试", 2400);
+            console.error(error);
+          }
+        });
+      });
+    }
+
+    async function searchHomeKeyword(keyword, trackSearch = true) {
+      const value = String(keyword || "").trim();
+      const input = document.querySelector("#home input[type='search']");
+      input.value = value;
+      showPanel("home");
+      notify(value ? "正在搜索：" + value : "正在加载默认结果");
+      currentKeyword = value || DEFAULT_KEYWORD;
+      currentSearchIsShareable = Boolean(value);
+      currentOffset = 0;
+      await loadProducts(currentKeyword, currentSort, 0, false, trackSearch && Boolean(value));
+    }
+
+    function guideKeywordExample() {
+      return guideKeywords.slice(0, 4).join("、");
+    }
+
+    function initSearchGuide() {
+      const guide = document.getElementById("searchGuide");
+      const close = document.getElementById("searchGuideClose");
+      if (!guide || !close) return;
+
+      const guideText = guide.querySelector(".search-guide-head p");
+      const guideKeywordWrap = guide.querySelector(".guide-keywords");
+      if (guideText) {
+        guideText.textContent = `在上方输入框搜索 AI 账号、套餐或平台名称，点击搜索后即可查看商品库存、价格和对应店铺。可以先试试：${guideKeywordExample()}。`;
+      }
+      if (guideKeywordWrap) {
+        guideKeywordWrap.innerHTML = guideKeywords.map((keyword) => `
+          <button type="button" data-guide-keyword="${escapeHtml(keyword)}">${escapeHtml(keyword)}</button>
+        `).join("");
+      }
+
+      if (localStorage.getItem("search_guide_seen") !== "1") {
+        guide.classList.add("active");
+      }
+
+      close.addEventListener("click", () => {
+        localStorage.setItem("search_guide_seen", "1");
+        guide.classList.remove("active");
+      });
+
+      guide.querySelectorAll("[data-guide-keyword]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const keyword = button.dataset.guideKeyword || button.textContent;
+          localStorage.setItem("search_guide_seen", "1");
+          guide.classList.remove("active");
+          try {
+            await searchHomeKeyword(keyword, true);
+          } catch (error) {
+            notify("搜索失败，请稍后再试", 2400);
+            console.error(error);
+          }
+        });
+      });
+    }
+
+    function initStepGuide() {
+      const mask = document.getElementById("guideMask");
+      const popover = document.getElementById("guidePopover");
+      const stepText = document.getElementById("guideStepText");
+      const title = document.getElementById("guideTitle");
+      const text = document.getElementById("guideText");
+      const cancel = document.getElementById("guideCancel");
+      const next = document.getElementById("guideNext");
+      const searchForm = document.querySelector("#home [data-search-form]");
+      const searchInput = searchForm?.querySelector("input");
+      const searchButton = searchForm?.querySelector("button[type='submit']");
+      if (!mask || !popover || !stepText || !title || !text || !cancel || !next || !searchInput || !searchButton) return;
+      const example = guideKeywordExample();
+
+      const steps = [
+        {
+          target: searchForm,
+          focusClass: "guide-focus",
+          step: "第一步",
+          title: "输入想查找的关键词",
+          text: `例如 ${example}。多个关键词可以用空格隔开，越具体越容易找到合适的商品。`,
+          button: "下一步"
+        },
+        {
+          target: searchButton,
+          focusClass: "guide-focus-button",
+          step: "第二步",
+          title: "点击搜索查看结果",
+          text: "搜索后会显示相关商品，你可以对比价格、库存和店铺信息，再选择前往购买或查看详情。",
+          button: "完成"
+        }
+      ];
+      let currentStep = 0;
+      let activeTarget = null;
+
+      function stopGuide() {
+        localStorage.setItem("home_step_guide_seen", "1");
+        mask.classList.remove("active");
+        popover.classList.remove("active");
+        if (activeTarget) activeTarget.classList.remove("guide-focus", "guide-focus-button");
+        activeTarget = null;
+        window.removeEventListener("resize", placePopover);
+        window.removeEventListener("scroll", placePopover, true);
+      }
+
+      function placePopover() {
+        if (!activeTarget || !popover.classList.contains("active")) return;
+        const rect = activeTarget.getBoundingClientRect();
+        const popRect = popover.getBoundingClientRect();
+        const gap = 18;
+        let top = rect.bottom + gap;
+        if (top + popRect.height > window.innerHeight - 16) {
+          top = Math.max(16, rect.top - popRect.height - gap);
+        }
+        let left = rect.left;
+        left = Math.min(Math.max(16, left), window.innerWidth - popRect.width - 16);
+        popover.style.top = `${top}px`;
+        popover.style.left = `${left}px`;
+      }
+
+      function showStep(index) {
+        currentStep = index;
+        const item = steps[currentStep];
+        if (activeTarget) activeTarget.classList.remove("guide-focus", "guide-focus-button");
+        activeTarget = item.target;
+        stepText.textContent = item.step;
+        title.textContent = item.title;
+        text.textContent = item.text;
+        next.textContent = item.button;
+        mask.classList.add("active");
+        popover.classList.add("active");
+        activeTarget.classList.add(item.focusClass);
+        activeTarget.scrollIntoView({ block: "center", behavior: "smooth" });
+        setTimeout(placePopover, 260);
+      }
+
+      cancel.addEventListener("click", stopGuide);
+      mask.addEventListener("click", stopGuide);
+      next.addEventListener("click", () => {
+        if (currentStep >= steps.length - 1) {
+          stopGuide();
+          searchInput.focus();
+          return;
+        }
+        showStep(currentStep + 1);
+      });
+      window.addEventListener("resize", placePopover);
+      window.addEventListener("scroll", placePopover, true);
+
+      if (localStorage.getItem("home_step_guide_seen") !== "1") {
+        setTimeout(() => showStep(0), localStorage.getItem("disclaimer_date") ? 700 : 1200);
+      }
+    }
+
+    document.querySelectorAll("[data-search-form]").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const input = form.querySelector("input");
+        const keyword = input.value.trim();
+        const panel = form.closest("[data-panel]")?.dataset.panel;
+        input.blur();
+        notify(keyword ? "正在筛选：" + keyword : "正在加载全部数据");
+
+        try {
+          if (panel === "home") {
+            currentKeyword = keyword || DEFAULT_KEYWORD;
+            currentSearchIsShareable = Boolean(keyword);
+            currentOffset = 0;
+            await loadProducts(currentKeyword, currentSort, 0, false, Boolean(keyword));
+          } else if (panel === "stores") {
+            await loadStores(keyword);
+          }
+        } catch (error) {
+          notify("加载失败，请稍后再试", 2400);
+          console.error(error);
+        }
+      });
+    });
+
+    document.querySelector("[data-open-report]").addEventListener("click", () => {
+      modal.classList.add("active");
+      document.getElementById("reportName").focus();
+    });
+
+    document.querySelector("[data-close-report]").addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+
+    document.querySelector("[data-close-info]").addEventListener("click", () => {
+      infoModal.classList.remove("active");
+    });
+
+    infoModal.addEventListener("click", (event) => {
+      if (event.target === infoModal) {
+        infoModal.classList.remove("active");
+      }
+    });
+
+    document.querySelector("[data-close-homepage-ad]").addEventListener("click", () => {
+      homepageAdDetailModal.classList.remove("active");
+    });
+
+    homepageAdDetailModal.addEventListener("click", (event) => {
+      if (event.target === homepageAdDetailModal) {
+        homepageAdDetailModal.classList.remove("active");
+      }
+    });
+
+    document.querySelector("[data-close-comment]").addEventListener("click", () => {
+      commentModal.classList.remove("active");
+    });
+
+    commentModal.addEventListener("click", (event) => {
+      if (event.target === commentModal) {
+        commentModal.classList.remove("active");
+      }
+    });
+
+    document.querySelector("[data-close-share]").addEventListener("click", () => {
+      shareModal.classList.remove("active");
+    });
+
+    shareModal.addEventListener("click", (event) => {
+      if (event.target === shareModal) {
+        shareModal.classList.remove("active");
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        modal.classList.remove("active");
+        infoModal.classList.remove("active");
+        homepageAdDetailModal.classList.remove("active");
+        commentModal.classList.remove("active");
+        shareModal.classList.remove("active");
+      }
+    });
+
+    document.querySelector("[data-report-form]").addEventListener("submit", (event) => {
+      event.preventDefault();
+      modal.classList.remove("active");
+      notify("曝光信息已提交，等待审核。", 2200);
+      event.currentTarget.reset();
+    });
+
+    document.getElementById("commentForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!currentCommentShop) return;
+      const form = event.currentTarget;
+      const data = Object.fromEntries(new FormData(form).entries());
+      try {
+        await apiJson("/api/shop-comments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            shopKey: currentCommentShop.key || "",
+            shopGuid: currentCommentShop.guid || "",
+            shopName: currentCommentShop.name || "",
+            nickname: data.nickname || "",
+            content: data.content || ""
+          })
+        });
+        notify("评论已提交，等待管理员审核", 2400);
+        form.reset();
+        await loadShopComments(currentCommentShop);
+      } catch (error) {
+        notify("评论提交失败，请稍后再试", 2400);
+        console.error(error);
+      }
+    });
+
+    document.getElementById("reportPageForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const data = Object.fromEntries(new FormData(form).entries());
+      try {
+        await apiJson("/api/reports", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        notify("举报已提交，等待管理员审核", 2400);
+        form.reset();
+      } catch (error) {
+        notify("提交失败，请稍后再试", 2400);
+        console.error(error);
+      }
+    });
+
+    const initial = location.hash.replace("#", "");
+    document.getElementById("shopSubmitForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const data = Object.fromEntries(new FormData(form).entries());
+      try {
+        await apiJson("/api/shop-submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        notify("店铺已提交，等待管理员审核", 2400);
+        form.reset();
+      } catch (error) {
+        notify("提交失败，请检查链接或稍后再试", 2600);
+        console.error(error);
+      }
+    });
+
+    if (["home", "stores", "submit", "submit-shop", "changes", "report", "exposure", "about"].includes(initial)) {
+      showPanel(initial);
+    }
+
+    (function() {
+      const today = new Date().toISOString().slice(0, 10);
+      if (localStorage.getItem("disclaimer_date") !== today) {
+        const overlay = document.getElementById("disclaimerOverlay");
+        overlay.classList.add("active");
+        document.getElementById("disclaimerAccept").addEventListener("click", function() {
+          localStorage.setItem("disclaimer_date", today);
+          overlay.classList.remove("active");
+          initStepGuide();
+        });
+      } else {
+        initStepGuide();
+      }
+    })();
+
+    currentKeyword = initialShareKeyword || DEFAULT_KEYWORD;
+    document.querySelector("#home input[type='search']").value = currentKeyword;
+    bindHomepageAdDetails();
+    initSearchGuide();
+    Promise.all([loadProducts(currentKeyword, "price_asc", 0, false, false), loadStores(), loadHotSearch(), loadChanges(), loadReports(), loadAbout()]).catch((error) => {
+      notify("数据库数据加载失败，请检查服务或连接配置", 3000);
+      console.error(error);
+    });
+  </script>
+</body>
+</html>
+
+
