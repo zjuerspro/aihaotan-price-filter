@@ -3534,8 +3534,7 @@
       isLoading = true;
       try {
         const activeKeyword = String(keyword || "").trim() || DEFAULT_KEYWORD;
-        const hasPriceFilter = minPriceFilter !== "" || maxPriceFilter !== "";
-        if (trackSearch && activeKeyword && offset === 0 && !(LIVE_API_BASE && hasPriceFilter)) {
+        if (trackSearch && activeKeyword && offset === 0 && !LIVE_API_BASE) {
           const result = await apiJson("/api/search", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
